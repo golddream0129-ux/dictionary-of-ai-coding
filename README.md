@@ -8,7 +8,7 @@
 
 **AI coding can feel like it's just for experts**. Unexplained jargon. Mysterious failures. Bills that don't seem to match the work.
 
-It isn't, really. A lot of the confusion is manufactured: **there's a whole VC-funded economy that does better when this stuff stays hard to understand**.
+It isn't, really. A lot of the confusion is manufactured: **there's a whole VC-funded economy that benefits from keeping it hard to understand**.
 
 The basic terms of engagement are learnable in an afternoon. Once you have them, the whole thing stops feeling like guesswork.
 
