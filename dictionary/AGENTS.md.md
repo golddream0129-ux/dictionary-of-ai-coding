@@ -6,4 +6,4 @@ A file in the [environment](./Environment.md) that the [harness](./Harness.md) l
 
 "Why is every session starting with 4k tokens already burned?"
 
-"Check AGENTS.md — someone pasted the entire style guide in there instead of putting it behind a skill."
+"Check AGENTS.md — someone pasted the entire style guide in there instead of putting it behind a [skill](./Skill.md)."

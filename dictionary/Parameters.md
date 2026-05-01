@@ -4,4 +4,4 @@ The numbers inside a [model](./Model.md) — often billions of them — tuned du
 
 "Can we fine-tune it on our codebase?"
 
-"That'd update the parameters — different model afterwards. For one project it's almost always cheaper to load the codebase as context than to retrain."
+"That'd update the parameters — different model afterwards. For one project it's almost always cheaper to load the codebase as [context](./Context.md) than to retrain."

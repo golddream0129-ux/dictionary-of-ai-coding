@@ -11,6 +11,6 @@ A working pattern where the user kicks off a [session](./Session.md) and leaves 
 
 "I'm running this AFK — three sandboxed agents on the refactor, reviewing the PRs in the morning."
 
-"Bypass permissions?"
+"[Bypass permissions](./Agent%20mode.md)?"
 
-"Yeah, read-only filesystem, no network."
+"Yeah, read-only [filesystem](./Filesystem.md), no network."

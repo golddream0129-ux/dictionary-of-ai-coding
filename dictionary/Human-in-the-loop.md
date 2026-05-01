@@ -7,6 +7,6 @@ A working pattern where one or more humans pair with the [agent](./Agent.md) dur
 
 *Usage:*
 
-"Run this AFK overnight?"
+"Run this [AFK](./AFK.md) overnight?"
 
 "No, schema migration — keep it human-in-the-loop. I want to see each step and steer if it picks the wrong column to backfill from."

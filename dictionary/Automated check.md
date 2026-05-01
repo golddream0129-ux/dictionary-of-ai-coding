@@ -4,9 +4,9 @@ A deterministic verification that runs in the [environment](./Environment.md) â€
 
 *Usage:*
 
-"The agent keeps shipping broken code in the AFK runs."
+"The agent keeps shipping broken code in the [AFK](./AFK.md) runs."
 
-"What automated checks are wired into the sandbox?"
+"What automated checks are wired into the [sandbox](./Sandbox.md)?"
 
 "Just the unit tests."
 

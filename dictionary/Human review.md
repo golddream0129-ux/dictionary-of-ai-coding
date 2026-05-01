@@ -4,7 +4,7 @@ The user reading the code the [agent](./Agent.md) produced and forming a judgeme
 
 *Usage:*
 
-"I human-reviewed the AFK output."
+"I human-reviewed the [AFK](./AFK.md) output."
 
 "You read the diff or just the summary?"
 

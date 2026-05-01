@@ -7,6 +7,6 @@ An isolated [environment](./Environment.md) the [agent](./Agent.md) runs inside 
 
 *Usage:*
 
-"I want to let it run bypass-permissions overnight but I'm not ready for that."
+"I want to let it run [bypass-permissions](./Agent%20mode.md) overnight but I'm not ready for that."
 
 "Put it in a sandbox — fresh container, no credentials mounted, no network out. Worst case it nukes its own filesystem and you discard the container."

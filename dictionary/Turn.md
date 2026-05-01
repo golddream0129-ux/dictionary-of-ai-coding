@@ -4,4 +4,4 @@ One user message plus everything the [agent](./Agent.md) does in response, up un
 
 "One turn took two minutes?"
 
-"It made fourteen tool calls inside that turn — each one is a separate model provider request. Latency stacks up before the agent finally yields back to you."
+"It made fourteen [tool calls](./Tool%20call.md) inside that turn — each one is a separate model provider request. Latency stacks up before the agent finally yields back to you."

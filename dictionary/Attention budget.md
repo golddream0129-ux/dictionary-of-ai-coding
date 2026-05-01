@@ -4,4 +4,4 @@ Each [token](./Token.md) has a finite amount of influence to distribute across t
 
 "Why does it keep ignoring the schema I pasted at the top?"
 
-"We're well into the dumb zone — every token's attention budget is fixed, but the context kept growing. The signal on the schema is now competing with thousands of newer tokens."
+"We're well into the [dumb zone](./Smart%20zone.md) — every token's attention budget is fixed, but the context kept growing. The signal on the schema is now competing with thousands of newer tokens."

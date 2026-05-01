@@ -2,6 +2,6 @@
 
 *Usage:*
 
-"The refactor session is burning through credit even though the inputs are small."
+"The refactor [session](./Session.md) is burning through credit even though the inputs are small."
 
-"Agent's rewriting whole files instead of patching. Output tokens cost roughly five times the input rate — get it emitting edits and the bill drops."
+"[Agent](./Agent.md)'s rewriting whole files instead of patching. Output tokens cost roughly five times the input rate — get it emitting edits and the bill drops."

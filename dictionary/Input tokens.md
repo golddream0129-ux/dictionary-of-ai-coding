@@ -2,6 +2,6 @@
 
 *Usage:*
 
-"Bill's high but the agent's barely writing anything."
+"Bill's high but the [agent](./Agent.md)'s barely writing anything."
 
-"It's the input tokens — every turn re-sends the whole session. Without prefix caching you re-pay for the history each request."
+"It's the input tokens — every [turn](./Turn.md) re-sends the whole [session](./Session.md). Without prefix caching you re-pay for the history each request."

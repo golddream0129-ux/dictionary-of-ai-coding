@@ -2,6 +2,6 @@ A [handoff](./Handoff.md) done in-memory: the previous [session](./Session.md)'s
 
 *Usage:*
 
-"Context's getting heavy and I still have the test pass to do."
+"[Context](./Context.md)'s getting heavy and I still have the test pass to do."
 
 "Compact before you start — write what's load-bearing into the summary prompt so the new session keeps the schema decisions and drops the exploration."

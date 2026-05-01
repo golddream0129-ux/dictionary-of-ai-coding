@@ -2,6 +2,6 @@ What the [model](./Model.md) actually does. Given a [context](./Context.md), it 
 
 *Usage:*
 
-"How does the agent 'decide' to call a tool?"
+"How does the [agent](./Agent.md) 'decide' to call a tool?"
 
-"It doesn't — it's next-token prediction all the way down. The tool call is just a structured string the harness parses out of the output stream."
+"It doesn't — it's next-token prediction all the way down. The tool call is just a structured string the [harness](./Harness.md) parses out of the output stream."

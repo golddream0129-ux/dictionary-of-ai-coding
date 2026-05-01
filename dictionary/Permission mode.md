@@ -2,6 +2,6 @@ The permission-gating slice of an [agent mode](./Agent%20mode.md) — which [too
 
 *Usage:*
 
-"It paused on every grep — totally killed the AFK run."
+"It paused on every grep — totally killed the [AFK](./AFK.md) run."
 
-"Loosen the permission mode for read-only tools, keep prompting on writes and shell. Most permission requests on a research session are noise."
+"Loosen the permission mode for read-only [tools](./Tool.md), keep prompting on writes and shell. Most permission requests on a research [session](./Session.md) are noise."

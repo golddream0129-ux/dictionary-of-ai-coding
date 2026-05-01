@@ -4,4 +4,4 @@ The process that sets a [model](./Model.md)'s [parameters](./Parameters.md), by 
 
 "Can we get it to know our internal API?"
 
-"Not via training — that's a months-long process by the model provider. Load the API docs into context instead, that's the lever you actually have."
+"Not via training — that's a months-long process by the model provider. Load the API docs into [context](./Context.md) instead, that's the lever you actually have."

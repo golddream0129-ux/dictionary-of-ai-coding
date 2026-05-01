@@ -4,4 +4,4 @@ The [parameters](./Parameters.md). [Stateless](./Stateless.md) — does [next-to
 
 "Should we switch the model from Sonnet to Opus for the planning step?"
 
-"Try it — but the harness is doing most of the lifting on this task. The model swap won't help if the system prompt and tools are wrong."
+"Try it — but the harness is doing most of the lifting on this task. The model swap won't help if the [system prompt](./System%20prompt.md) and [tools](./Tool.md) are wrong."

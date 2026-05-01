@@ -2,6 +2,6 @@ One round-trip from the [harness](./Harness.md) to the [model provider](./Model%
 
 *Usage:*
 
-"One question burned forty thousand tokens?"
+"One question burned forty thousand [tokens](./Token.md)?"
 
-"Look at the tool calls — twelve grep, eight read, four edits. Each tool result spawns another model provider request, and the whole session prefix re-sends every time."
+"Look at the tool calls — twelve grep, eight read, four edits. Each tool result spawns another model provider request, and the whole [session](./Session.md) prefix re-sends every time."

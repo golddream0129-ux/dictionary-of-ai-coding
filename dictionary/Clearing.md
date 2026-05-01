@@ -4,4 +4,4 @@ Ending the current [session](./Session.md) and starting a fresh one. The next me
 
 "It's stuck looping on the failing test."
 
-"Just clear it — start a fresh session with the plan doc and the test file. No point fighting the existing context."
+"Just clear it — start a fresh session with the plan doc and the test file. No point fighting the existing [context](./Context.md)."

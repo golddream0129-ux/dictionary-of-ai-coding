@@ -4,4 +4,4 @@ The shared understanding of what's being built, held in common between user and 
 
 "It's writing exactly what I asked for and it's still wrong."
 
-"You don't share a design concept yet — it's filling gaps with assumptions. Keep talking until cancellation, refunds, and partial fulfilment all line up between you before you let it write a spec."
+"You don't share a design concept yet — it's filling gaps with assumptions. Keep talking until cancellation, refunds, and partial fulfilment all line up between you before you let it write a [spec](./Spec.md)."

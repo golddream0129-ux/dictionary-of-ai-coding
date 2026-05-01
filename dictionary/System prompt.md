@@ -2,6 +2,6 @@ The instructions the [harness](./Harness.md) prepends to every [model provider r
 
 *Usage:*
 
-"Two harnesses, same model, totally different behavior on the same prompt."
+"Two harnesses, same [model](./Model.md), totally different behavior on the same prompt."
 
 "Different system prompts. One's tuned for terse code edits, the other for explaining — that's where the divergence lives, before your message even arrives."

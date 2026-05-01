@@ -4,4 +4,4 @@ Running a trained [model](./Model.md) to generate output — what happens on eve
 
 "Why does the bill scale with usage instead of being a flat license?"
 
-"You're paying for inference — every model provider request runs the model on the provider's hardware. Training already happened, but inference costs accrue per request, and a single turn can fan out into many requests when tools are called."
+"You're paying for inference — every model provider request runs the model on the provider's hardware. Training already happened, but inference costs accrue per request, and a single [turn](./Turn.md) can fan out into many requests when [tools](./Tool.md) are called."

@@ -4,4 +4,4 @@ A function the [harness](./Harness.md) exposes for the [agent](./Agent.md) to ca
 
 "Can the agent query staging directly?"
 
-"Add a `psql` tool to the harness, scoped read-only on staging. Without a tool for it, the agent's blind to anything outside the filesystem."
+"Add a `psql` tool to the harness, scoped read-only on staging. Without a tool for it, the agent's blind to anything outside the [filesystem](./Filesystem.md)."

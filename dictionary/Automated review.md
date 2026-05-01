@@ -4,6 +4,6 @@ An [agent](./Agent.md) reviewing another agent's work, often with a different [m
 
 *Usage:*
 
-"We're getting too many bad PRs from the AFK runs."
+"We're getting too many bad PRs from the [AFK](./AFK.md) runs."
 
 "Add an automated review step before merge — different model, separate system prompt, scoped to security and contract changes."

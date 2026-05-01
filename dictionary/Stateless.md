@@ -2,6 +2,6 @@ Carries no information forward. The [model](./Model.md) is stateless across [mod
 
 *Usage:*
 
-"Why does it forget the convention every time I clear?"
+"Why does it forget the convention every time I [clear](./Clearing.md)?"
 
-"The model's stateless — the new session starts empty. If you want it carried, write it to AGENTS.md or a memory file the harness loads at session start."
+"The model's stateless — the new session starts empty. If you want it carried, write it to [AGENTS.md](./AGENTS.md.md) or a memory file the [harness](./Harness.md) loads at session start."

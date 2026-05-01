@@ -4,4 +4,4 @@ One bounded run of interaction with an [agent](./Agent.md). Starts empty, accumu
 
 "How long can one session run before it falls apart?"
 
-"Depends on the work — a focused refactor stays sharp longer than open-ended research. Once the session bloats, hand off or compact, don't push through."
+"Depends on the work — a focused refactor stays sharp longer than open-ended research. Once the session bloats, [hand off](./Handoff.md) or compact, don't push through."

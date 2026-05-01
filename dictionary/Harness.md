@@ -4,4 +4,4 @@ Everything around the [model](./Model.md) that turns it into an [agent](./Agent.
 
 "Same model, why is Claude Code editing files and Claude.ai just answering questions?"
 
-"Different harnesses — Claude Code has filesystem tools, a different system prompt, and a permission layer. The model isn't the variable here."
+"Different harnesses — Claude Code has [filesystem](./Filesystem.md) tools, a different system prompt, and a permission layer. The model isn't the variable here."

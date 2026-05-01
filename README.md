@@ -99,7 +99,7 @@ That's what this dictionary is for. **The vocabulary of AI coding, translated in
 </details>
 
 <details>
-<summary>Section 6 — Work That Spans Multiple Context Windows</summary>
+<summary>Section 6 — Memory and Steering</summary>
 
 - [Memory system](#memory-system)
 - [AGENTS.md](#agentsmd)
@@ -133,7 +133,7 @@ The [parameters](#parameters). [Stateless](#stateless) — does [next-token pred
 
 "Should we switch the model from Sonnet to Opus for the planning step?"
 
-"Try it — but the harness is doing most of the lifting on this task. The model swap won't help if the system prompt and tools are wrong."
+"Try it — but the harness is doing most of the lifting on this task. The model swap won't help if the [system prompt](#system-prompt) and [tools](#tool) are wrong."
 
 ### Parameters
 
@@ -143,7 +143,7 @@ The numbers inside a [model](#model) — often billions of them — tuned during
 
 "Can we fine-tune it on our codebase?"
 
-"That'd update the parameters — different model afterwards. For one project it's almost always cheaper to load the codebase as context than to retrain."
+"That'd update the parameters — different model afterwards. For one project it's almost always cheaper to load the codebase as [context](#context) than to retrain."
 
 ### Training
 
@@ -153,7 +153,7 @@ The process that sets a [model](#model)'s [parameters](#parameters), by exposing
 
 "Can we get it to know our internal API?"
 
-"Not via training — that's a months-long process by the model provider. Load the API docs into context instead, that's the lever you actually have."
+"Not via training — that's a months-long process by the model provider. Load the API docs into [context](#context) instead, that's the lever you actually have."
 
 ### Inference
 
@@ -163,7 +163,7 @@ Running a trained [model](#model) to generate output — what happens on every [
 
 "Why does the bill scale with usage instead of being a flat license?"
 
-"You're paying for inference — every model provider request runs the model on the provider's hardware. Training already happened, but inference costs accrue per request, and a single turn can fan out into many requests when tools are called."
+"You're paying for inference — every model provider request runs the model on the provider's hardware. Training already happened, but inference costs accrue per request, and a single [turn](#turn) can fan out into many requests when [tools](#tool) are called."
 
 ### Token
 
@@ -183,9 +183,9 @@ What the [model](#model) actually does. Given a [context](#context), it samples 
 
 *Usage:*
 
-"How does the agent 'decide' to call a tool?"
+"How does the [agent](#agent) 'decide' to call a tool?"
 
-"It doesn't — it's next-token prediction all the way down. The tool call is just a structured string the harness parses out of the output stream."
+"It doesn't — it's next-token prediction all the way down. The tool call is just a structured string the [harness](#harness) parses out of the output stream."
 
 ### Model provider
 
@@ -203,9 +203,9 @@ One round-trip from the [harness](#harness) to the [model provider](#model-provi
 
 *Usage:*
 
-"One question burned forty thousand tokens?"
+"One question burned forty thousand [tokens](#token)?"
 
-"Look at the tool calls — twelve grep, eight read, four edits. Each tool result spawns another model provider request, and the whole session prefix re-sends every time."
+"Look at the tool calls — twelve grep, eight read, four edits. Each tool result spawns another model provider request, and the whole [session](#session) prefix re-sends every time."
 
 ### Input tokens
 
@@ -213,9 +213,9 @@ One round-trip from the [harness](#harness) to the [model provider](#model-provi
 
 *Usage:*
 
-"Bill's high but the agent's barely writing anything."
+"Bill's high but the [agent](#agent)'s barely writing anything."
 
-"It's the input tokens — every turn re-sends the whole session. Without prefix caching you re-pay for the history each request."
+"It's the input tokens — every [turn](#turn) re-sends the whole [session](#session). Without prefix caching you re-pay for the history each request."
 
 ### Output tokens
 
@@ -223,9 +223,9 @@ One round-trip from the [harness](#harness) to the [model provider](#model-provi
 
 *Usage:*
 
-"The refactor session is burning through credit even though the inputs are small."
+"The refactor [session](#session) is burning through credit even though the inputs are small."
 
-"Agent's rewriting whole files instead of patching. Output tokens cost roughly five times the input rate — get it emitting edits and the bill drops."
+"[Agent](#agent)'s rewriting whole files instead of patching. Output tokens cost roughly five times the input rate — get it emitting edits and the bill drops."
 
 ### Cache tokens
 
@@ -235,7 +235,7 @@ One round-trip from the [harness](#harness) to the [model provider](#model-provi
 
 "Cost on long sessions is brutal — eight bucks for a refactor."
 
-"Check the cache tokens. If the harness is reordering the system prompt or files between turns, the prefix breaks and you re-pay full input rate every request."
+"Check the cache tokens. If the [harness](#harness) is reordering the [system prompt](#system-prompt) or files between turns, the prefix breaks and you re-pay full input rate every request."
 
 ## Section 2 — Sessions, Context Windows & Turns
 
@@ -245,9 +245,9 @@ Carries no information forward. The [model](#model) is stateless across [model p
 
 *Usage:*
 
-"Why does it forget the convention every time I clear?"
+"Why does it forget the convention every time I [clear](#clearing)?"
 
-"The model's stateless — the new session starts empty. If you want it carried, write it to AGENTS.md or a memory file the harness loads at session start."
+"The model's stateless — the new session starts empty. If you want it carried, write it to [AGENTS.md](#agentsmd) or a memory file the [harness](#harness) loads at session start."
 
 ### Context
 
@@ -269,7 +269,7 @@ The buffer the [model](#model) reads on each [model provider request](#model-pro
 
 "Can I just paste the whole monorepo into the prompt?"
 
-"The context window's 200k tokens — that's maybe a fifth of the repo. Pick the files the task touches, leave the rest behind a tool call."
+"The context window's 200k [tokens](#token) — that's maybe a fifth of the repo. Pick the files the task touches, leave the rest behind a [tool call](#tool-call)."
 
 ### Stateful
 
@@ -289,7 +289,7 @@ Everything around the [model](#model) that turns it into an [agent](#agent): [to
 
 "Same model, why is Claude Code editing files and Claude.ai just answering questions?"
 
-"Different harnesses — Claude Code has filesystem tools, a different system prompt, and a permission layer. The model isn't the variable here."
+"Different harnesses — Claude Code has [filesystem](#filesystem) tools, a different system prompt, and a permission layer. The model isn't the variable here."
 
 ### Agent
 
@@ -309,7 +309,7 @@ The instructions the [harness](#harness) prepends to every [model provider reque
 
 *Usage:*
 
-"Two harnesses, same model, totally different behavior on the same prompt."
+"Two harnesses, same [model](#model), totally different behavior on the same prompt."
 
 "Different system prompts. One's tuned for terse code edits, the other for explaining — that's where the divergence lives, before your message even arrives."
 
@@ -321,7 +321,7 @@ One bounded run of interaction with an [agent](#agent). Starts empty, accumulate
 
 "How long can one session run before it falls apart?"
 
-"Depends on the work — a focused refactor stays sharp longer than open-ended research. Once the session bloats, hand off or compact, don't push through."
+"Depends on the work — a focused refactor stays sharp longer than open-ended research. Once the session bloats, [hand off](#handoff) or compact, don't push through."
 
 ### Turn
 
@@ -331,7 +331,7 @@ One user message plus everything the [agent](#agent) does in response, up until 
 
 "One turn took two minutes?"
 
-"It made fourteen tool calls inside that turn — each one is a separate model provider request. Latency stacks up before the agent finally yields back to you."
+"It made fourteen [tool calls](#tool-call) inside that turn — each one is a separate model provider request. Latency stacks up before the agent finally yields back to you."
 
 ## Section 3 — Tools & Environment
 
@@ -345,7 +345,7 @@ The world the [agent](#agent) acts on — anything outside the [harness](#harnes
 
 "The agent can't see the staging DB schema."
 
-"Wire it into the environment — give it a `psql` tool scoped to read-only on staging. The harness is fine, it just has nothing to act on."
+"Wire it into the environment — give it a `psql` [tool](#tool) scoped to read-only on staging. The harness is fine, it just has nothing to act on."
 
 ### Filesystem
 
@@ -355,7 +355,7 @@ A tree of files and directories the [agent](#agent) reads from, writes to, and e
 
 "Why isn't it picking up my AGENTS.md?"
 
-"It's running against a different filesystem — the sandbox mounted the parent dir, not the project root. Repoint the harness."
+"It's running against a different filesystem — the [sandbox](#sandbox) mounted the parent dir, not the project root. Repoint the harness."
 
 ### Tool
 
@@ -365,7 +365,7 @@ A function the [harness](#harness) exposes for the [agent](#agent) to call — R
 
 "Can the agent query staging directly?"
 
-"Add a `psql` tool to the harness, scoped read-only on staging. Without a tool for it, the agent's blind to anything outside the filesystem."
+"Add a `psql` tool to the harness, scoped read-only on staging. Without a tool for it, the agent's blind to anything outside the [filesystem](#filesystem)."
 
 ### Tool call
 
@@ -395,7 +395,7 @@ What the [harness](#harness) shows the user before executing a [tool call](#tool
 
 "It's been blocked on a permission request for ten minutes — I was in a meeting."
 
-"That's the cost of human-in-the-loop. Pre-approve the safe tools so the request only fires on the actually-risky calls."
+"That's the cost of human-in-the-loop. Pre-approve the safe [tools](#tool) so the request only fires on the actually-risky calls."
 
 ### Permission mode
 
@@ -403,9 +403,9 @@ The permission-gating slice of an [agent mode](#agent-mode) — which [tool call
 
 *Usage:*
 
-"It paused on every grep — totally killed the AFK run."
+"It paused on every grep — totally killed the [AFK](#afk) run."
 
-"Loosen the permission mode for read-only tools, keep prompting on writes and shell. Most permission requests on a research session are noise."
+"Loosen the permission mode for read-only [tools](#tool), keep prompting on writes and shell. Most permission requests on a research [session](#session) are noise."
 
 ### Agent mode
 
@@ -419,9 +419,9 @@ A preset that shapes how the [agent](#agent) operates at runtime — bundles a [
 
 "Switch to plan mode — it'll block writes and stay in research."
 
-"What about for the AFK run later?"
+"What about for the [AFK](#afk) run later?"
 
-"Bypass mode, but only inside the sandbox."
+"Bypass mode, but only inside the [sandbox](#sandbox)."
 
 ### Sandbox
 
@@ -429,7 +429,7 @@ An isolated [environment](#environment) the [agent](#agent) runs inside — a co
 
 *Usage:*
 
-"I want to let it run bypass-permissions overnight but I'm not ready for that."
+"I want to let it run [bypass-permissions](#agent-mode) overnight but I'm not ready for that."
 
 "Put it in a sandbox — fresh container, no credentials mounted, no network out. Worst case it nukes its own filesystem and you discard the container."
 
@@ -450,7 +450,7 @@ Confidently-wrong [model](#model) output. Two flavors with different causes and 
 
 "Factuality or faithfulness?"
 
-"The method exists in the docs I pasted — it just stopped reading them after turn forty."
+"The method exists in the docs I pasted — it just stopped reading them after [turn](#turn) forty."
 
 "Faithfulness then. Compact and reload, don't bother adding more docs."
 
@@ -462,7 +462,7 @@ What the [model](#model) "knows" from [training](#training), stored in its [para
 
 "It writes flawless React but invents methods on our internal SDK."
 
-"React is dense in the parametric knowledge — millions of training examples. Your SDK isn't, so the model fills in plausible-looking shapes. Load the SDK docs into context."
+"React is dense in the parametric knowledge — millions of training examples. Your SDK isn't, so the model fills in plausible-looking shapes. Load the SDK docs into [context](#context)."
 
 ### Knowledge cutoff
 
@@ -494,7 +494,7 @@ When predicting each [token](#token), the [model](#model) factors in every other
 
 *Usage:*
 
-"It keeps confusing the two `user` symbols across the diff — sounds like we're in the dumb zone."
+"It keeps confusing the two `user` symbols across the diff — sounds like we're in the [dumb zone](#smart-zone)."
 
 "Yeah, the attention relationship between each call site and its declaration is fighting the other one — same token shape, different bindings. Rename one and the pairings sharpen."
 
@@ -506,7 +506,7 @@ Each [token](#token) has a finite amount of influence to distribute across the r
 
 "Why does it keep ignoring the schema I pasted at the top?"
 
-"We're well into the dumb zone — every token's attention budget is fixed, but the context kept growing. The signal on the schema is now competing with thousands of newer tokens."
+"We're well into the [dumb zone](#smart-zone) — every token's attention budget is fixed, but the context kept growing. The signal on the schema is now competing with thousands of newer tokens."
 
 ### Attention degradation
 
@@ -516,7 +516,7 @@ As a [session](#session) grows, each [token](#token)'s [attention budget](#atten
 
 "It's deep in the dumb zone — inventing generics that aren't in the type file."
 
-"Attention degradation. The type definitions are still in context, but the signal on them is buried under everything we've added since. Clear and reload."
+"Attention degradation. The type definitions are still in context, but the signal on them is buried under everything we've added since. [Clear](#clearing) and reload."
 
 ### Smart zone
 
@@ -538,7 +538,7 @@ Ending the current [session](#session) and starting a fresh one. The next messag
 
 "It's stuck looping on the failing test."
 
-"Just clear it — start a fresh session with the plan doc and the test file. No point fighting the existing context."
+"Just clear it — start a fresh session with the plan doc and the test file. No point fighting the existing [context](#context)."
 
 ### Handoff
 
@@ -556,19 +556,19 @@ A document used as the carry mechanism for a [handoff](#handoff) — written by 
 
 *Usage:*
 
-"How do I split this between the planning agent and the implementing one?"
+"How do I split this between the planning [agent](#agent) and the implementing one?"
 
 "Have the planner write a handoff artifact — file paths, decisions, constraints. The implementer's session opens with a pointer to the artifact and works from it as its brief."
 
 ### Spec
 
-A [handoff artifact](#handoff-artifact) describing a multi-session piece of work — what's being built, not how each session does its share. Mutates as work progresses. Made of [tickets](#ticket).
+A [handoff artifact](#handoff-artifact) describing a multi-[session](#session) piece of work — what's being built, not how each session does its share. Mutates as work progresses. Made of [tickets](#ticket).
 
 *Usage:*
 
 "Should this all be one session?"
 
-"No, write it up as a spec — break it into tickets, run each one in its own session. Trying to do the whole thing in a single context will hit the dumb zone before you're halfway."
+"No, write it up as a spec — break it into tickets, run each one in its own session. Trying to do the whole thing in a single [context](#context) will hit the [dumb zone](#smart-zone) before you're halfway."
 
 ### Ticket
 
@@ -586,7 +586,7 @@ A [handoff](#handoff) done in-memory: the previous [session](#session)'s history
 
 *Usage:*
 
-"Context's getting heavy and I still have the test pass to do."
+"[Context](#context)'s getting heavy and I still have the test pass to do."
 
 "Compact before you start — write what's load-bearing into the summary prompt so the new session keeps the schema decisions and drops the exploration."
 
@@ -598,9 +598,9 @@ A [handoff](#handoff) done in-memory: the previous [session](#session)'s history
 
 "It doesn't seem to remember what we decided about the schema earlier."
 
-"Autocompact fired between turns — the early decisions got summarised and we must have lost something. Reload the plan doc, or compact manually next time so you control what gets kept."
+"Autocompact fired between [turns](#turn) — the early decisions got summarised and we must have lost something. Reload the plan doc, or compact manually next time so you control what gets kept."
 
-## Section 6 — Work That Spans Multiple Context Windows
+## Section 6 — Memory and Steering
 
 ### Memory system
 
@@ -610,7 +610,7 @@ A system that attempts to make an [agent](#agent) [stateful](#stateful) across [
 
 "I keep having to re-tell it I'm on Postgres, not MySQL."
 
-"Wire up a memory system — write the stack to disk on the first turn, reload it at session start. The model itself is stateless; the memory layer fakes continuity."
+"Wire up a memory system — write the stack to disk on the first [turn](#turn), reload it at session start. The [model](#model) itself is [stateless](#stateless); the memory layer fakes continuity."
 
 ### AGENTS.md
 
@@ -622,7 +622,7 @@ A file in the [environment](#environment) that the [harness](#harness) loads int
 
 "Why is every session starting with 4k tokens already burned?"
 
-"Check AGENTS.md — someone pasted the entire style guide in there instead of putting it behind a skill."
+"Check AGENTS.md — someone pasted the entire style guide in there instead of putting it behind a [skill](#skill)."
 
 ### Progressive disclosure
 
@@ -630,25 +630,25 @@ Loading only the [context](#context) an [agent](#agent) needs right now, with po
 
 *Usage:*
 
-"Should I dump the entire style guide into AGENTS.md?"
+"Should I dump the entire style guide into [AGENTS.md](#agentsmd)?"
 
-"No — progressive disclosure. Reference the style guide as a skill the agent loads when it actually needs to write a component. AGENTS.md pays the token cost every turn."
+"No — progressive disclosure. Reference the style guide as a [skill](#skill) the agent loads when it actually needs to write a component. AGENTS.md pays the [token](#token) cost every [turn](#turn)."
 
 ### Skill
 
 A teachable capability bundled as a unit — instructions and resources for doing one task well, kept in the [environment](#environment) and loaded into the [context window](#context-window) only when relevant. The unit of [progressive disclosure](#progressive-disclosure) in a [harness](#harness).
 
-*Avoid:* "[tool](#tool)" — a tool is what the agent *calls*; a skill is instructions it *reads*.
+*Avoid:* "[tool](#tool)" — a tool is what the [agent](#agent) *calls*; a skill is instructions it *reads*.
 
 *Usage:*
 
 "Where should I put the deploy runbook?"
 
-"As a skill — the agent loads it only when the task involves deploys. In AGENTS.md it'd burn tokens on every turn for something we use weekly."
+"As a skill — the agent loads it only when the task involves deploys. In [AGENTS.md](#agentsmd) it'd burn [tokens](#token) on every [turn](#turn) for something we use weekly."
 
 ### Subagent
 
-An [agent](#agent) spawned by another agent via a [tool call](#tool-call). Runs in its own [session](#session) with its own [context window](#context-window), and reports a single [tool result](#tool-result) back. Distinct from a [handoff](#handoff) — the parent specifically expects a return; a handoff has no return path. **Cannot spawn further subagents** — the tree is one level deep. Subagents exist to isolate context, not to compose hierarchies.
+An [agent](#agent) spawned by another agent via a [tool call](#tool-call). Runs in its own [session](#session) with its own [context window](#context-window), and reports a single [tool result](#tool-result) back. Distinct from a [handoff](#handoff) — the parent specifically expects a return; a handoff has no return path. **Cannot spawn further subagents** — the tree is one level deep. Subagents exist to isolate [context](#context), not to compose hierarchies.
 
 *Usage:*
 
@@ -664,7 +664,7 @@ A working pattern where one or more humans pair with the [agent](#agent) during 
 
 *Usage:*
 
-"Run this AFK overnight?"
+"Run this [AFK](#afk) overnight?"
 
 "No, schema migration — keep it human-in-the-loop. I want to see each step and steer if it picks the wrong column to backfill from."
 
@@ -678,9 +678,9 @@ A working pattern where the user kicks off a [session](#session) and leaves the 
 
 "I'm running this AFK — three sandboxed agents on the refactor, reviewing the PRs in the morning."
 
-"Bypass permissions?"
+"[Bypass permissions](#agent-mode)?"
 
-"Yeah, read-only filesystem, no network."
+"Yeah, read-only [filesystem](#filesystem), no network."
 
 ### Automated check
 
@@ -690,9 +690,9 @@ A deterministic verification that runs in the [environment](#environment) — te
 
 *Usage:*
 
-"The agent keeps shipping broken code in the AFK runs."
+"The agent keeps shipping broken code in the [AFK](#afk) runs."
 
-"What automated checks are wired into the sandbox?"
+"What automated checks are wired into the [sandbox](#sandbox)?"
 
 "Just the unit tests."
 
@@ -706,7 +706,7 @@ An [agent](#agent) reviewing another agent's work, often with a different [model
 
 *Usage:*
 
-"We're getting too many bad PRs from the AFK runs."
+"We're getting too many bad PRs from the [AFK](#afk) runs."
 
 "Add an automated review step before merge — different model, separate system prompt, scoped to security and contract changes."
 
@@ -718,7 +718,7 @@ The user reading the code the [agent](#agent) produced and forming a judgement o
 
 *Usage:*
 
-"I human-reviewed the AFK output."
+"I human-reviewed the [AFK](#afk) output."
 
 "You read the diff or just the summary?"
 
@@ -746,7 +746,7 @@ The shared understanding of what's being built, held in common between user and 
 
 "It's writing exactly what I asked for and it's still wrong."
 
-"You don't share a design concept yet — it's filling gaps with assumptions. Keep talking until cancellation, refunds, and partial fulfilment all line up between you before you let it write a spec."
+"You don't share a design concept yet — it's filling gaps with assumptions. Keep talking until cancellation, refunds, and partial fulfilment all line up between you before you let it write a [spec](#spec)."
 
 ### Grilling
 
@@ -754,7 +754,7 @@ A technique for developing a [design concept](#design-concept) with an [agent](#
 
 *Usage:*
 
-"It went straight to writing the spec and got the cancellation logic wrong."
+"It went straight to writing the [spec](#spec) and got the cancellation logic wrong."
 
 "Grill it first — make it ask you about partial cancels, refunds, and timing before it commits anything to the doc. Cheaper to resolve in conversation than in code."
 

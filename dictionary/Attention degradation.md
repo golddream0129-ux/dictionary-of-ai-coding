@@ -4,4 +4,4 @@ As a [session](./Session.md) grows, each [token](./Token.md)'s [attention budget
 
 "It's deep in the dumb zone — inventing generics that aren't in the type file."
 
-"Attention degradation. The type definitions are still in context, but the signal on them is buried under everything we've added since. Clear and reload."
+"Attention degradation. The type definitions are still in context, but the signal on them is buried under everything we've added since. [Clear](./Clearing.md) and reload."

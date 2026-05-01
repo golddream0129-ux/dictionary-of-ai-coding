@@ -4,4 +4,4 @@ What the [harness](./Harness.md) shows the user before executing a [tool call](.
 
 "It's been blocked on a permission request for ten minutes — I was in a meeting."
 
-"That's the cost of human-in-the-loop. Pre-approve the safe tools so the request only fires on the actually-risky calls."
+"That's the cost of human-in-the-loop. Pre-approve the safe [tools](./Tool.md) so the request only fires on the actually-risky calls."

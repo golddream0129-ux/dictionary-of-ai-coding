@@ -4,4 +4,4 @@ A tree of files and directories the [agent](./Agent.md) reads from, writes to, a
 
 "Why isn't it picking up my AGENTS.md?"
 
-"It's running against a different filesystem — the sandbox mounted the parent dir, not the project root. Repoint the harness."
+"It's running against a different filesystem — the [sandbox](./Sandbox.md) mounted the parent dir, not the project root. Repoint the harness."

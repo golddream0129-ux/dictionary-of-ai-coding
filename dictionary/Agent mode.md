@@ -15,6 +15,6 @@ A preset that shapes how the [agent](./Agent.md) operates at runtime — bundles
 
 "Switch to plan mode — it'll block writes and stay in research."
 
-"What about for the AFK run later?"
+"What about for the [AFK](./AFK.md) run later?"
 
-"Bypass mode, but only inside the sandbox."
+"Bypass mode, but only inside the [sandbox](./Sandbox.md)."

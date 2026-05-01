@@ -2,6 +2,6 @@ A technique for developing a [design concept](./Design%20concept.md) with an [ag
 
 *Usage:*
 
-"It went straight to writing the spec and got the cancellation logic wrong."
+"It went straight to writing the [spec](./Spec.md) and got the cancellation logic wrong."
 
 "Grill it first — make it ask you about partial cancels, refunds, and timing before it commits anything to the doc. Cheaper to resolve in conversation than in code."

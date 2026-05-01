@@ -2,6 +2,6 @@ When predicting each [token](./Token.md), the [model](./Model.md) factors in eve
 
 *Usage:*
 
-"It keeps confusing the two `user` symbols across the diff — sounds like we're in the dumb zone."
+"It keeps confusing the two `user` symbols across the diff — sounds like we're in the [dumb zone](./Smart%20zone.md)."
 
 "Yeah, the attention relationship between each call site and its declaration is fighting the other one — same token shape, different bindings. Rename one and the pairings sharpen."

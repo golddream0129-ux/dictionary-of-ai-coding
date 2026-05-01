@@ -11,6 +11,6 @@ Confidently-wrong [model](./Model.md) output. Two flavors with different causes 
 
 "Factuality or faithfulness?"
 
-"The method exists in the docs I pasted — it just stopped reading them after turn forty."
+"The method exists in the docs I pasted — it just stopped reading them after [turn](./Turn.md) forty."
 
 "Faithfulness then. Compact and reload, don't bother adding more docs."

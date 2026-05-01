@@ -4,4 +4,4 @@
 
 "Cost on long sessions is brutal — eight bucks for a refactor."
 
-"Check the cache tokens. If the harness is reordering the system prompt or files between turns, the prefix breaks and you re-pay full input rate every request."
+"Check the cache tokens. If the [harness](./Harness.md) is reordering the [system prompt](./System%20prompt.md) or files between turns, the prefix breaks and you re-pay full input rate every request."

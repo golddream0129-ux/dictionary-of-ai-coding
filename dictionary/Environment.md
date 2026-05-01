@@ -6,4 +6,4 @@ The world the [agent](./Agent.md) acts on — anything outside the [harness](./H
 
 "The agent can't see the staging DB schema."
 
-"Wire it into the environment — give it a `psql` tool scoped to read-only on staging. The harness is fine, it just has nothing to act on."
+"Wire it into the environment — give it a `psql` [tool](./Tool.md) scoped to read-only on staging. The harness is fine, it just has nothing to act on."
