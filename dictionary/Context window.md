@@ -1,4 +1,4 @@
-The buffer the [model](./Model.md) reads on each [model provider request](./Model%20provider%20request.md). Finite, model-specific, and the *only* surface through which the model perceives anything.
+Everything the [model](./Model.md) sees on each [model provider request](./Model%20provider%20request.md). Finite, model-specific, and the *only* surface through which the model perceives anything.
 
 *Avoid:* "memory" — the context window is working state and doesn't persist across [sessions](./Session.md). [Memory](./Memory%20system.md) is a separate concept layered on top.
 

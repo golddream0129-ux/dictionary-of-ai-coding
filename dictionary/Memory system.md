@@ -4,4 +4,4 @@ A system that attempts to make an [agent](./Agent.md) [stateful](./Stateful.md) 
 
 "I keep having to re-tell it I'm on Postgres, not MySQL."
 
-"Wire up a memory system — write the stack to disk on the first [turn](./Turn.md), reload it at session start. The [model](./Model.md) itself is [stateless](./Stateless.md); the memory layer fakes continuity."
+"Wire up a memory system — write what it learns to the [filesystem](./Filesystem.md) on the first [turn](./Turn.md), reload it at session start. The [model](./Model.md) itself is [stateless](./Stateless.md); the memory layer fakes continuity."
