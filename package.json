@@ -1,0 +1,13 @@
+{
+  "name": "ai-coding-dictionary",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "generate": "tsx internal/generate-readme.ts"
+  },
+  "devDependencies": {
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2",
+    "@types/node": "^22.10.0"
+  }
+}
