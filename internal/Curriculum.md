@@ -8,9 +8,9 @@
 - Next-token prediction
 - Model provider
 - Model provider request
-- Prefix cache
 - Input tokens
 - Output tokens
+- Prefix cache
 - Cache tokens
 
 ## Section 2 — Sessions, Context Windows & Turns

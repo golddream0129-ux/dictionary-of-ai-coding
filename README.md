@@ -35,9 +35,9 @@ That's what this dictionary is for. **The vocabulary of AI coding, translated in
 - [Next-token prediction](#next-token-prediction)
 - [Model provider](#model-provider)
 - [Model provider request](#model-provider-request)
-- [Prefix cache](#prefix-cache)
 - [Input tokens](#input-tokens)
 - [Output tokens](#output-tokens)
+- [Prefix cache](#prefix-cache)
 - [Cache tokens](#cache-tokens)
 
 </details>
@@ -208,18 +208,6 @@ One round-trip from the [harness](#harness) to the [model provider](#model-provi
 
 "Look at the tool calls — twelve grep, eight read, four edits. Each tool result spawns another model provider request, and the whole [session](#session) prefix re-sends every time."
 
-### Prefix cache
-
-The [provider](#model-provider)-side store that lets consecutive [model provider requests](#model-provider-request) skip re-processing a shared prefix. When the start of a request matches the start of a recent one — same [system prompt](#system-prompt), same history up to some point — the provider reuses its prior work and bills those [tokens](#token) as [cache tokens](#cache-tokens) at a much lower rate.
-
-Anything that changes the prefix (reordering files, rewriting the system prompt mid-[session](#session), injecting a timestamp near the top) invalidates the cache from that point on, and the rest of the request bills at full [input token](#input-tokens) rate.
-
-_Usage:_
-
-"Why did the bill spike halfway through the session?"
-
-"[Harness](#harness) started injecting the current time into the system prompt every [turn](#turn). Prefix cache breaks at the first changed token, so every request after that billed at full rate."
-
 ### Input tokens
 
 [Tokens](#token) the [harness](#harness) sends on each [model provider request](#model-provider-request). Billed at a lower rate than [output tokens](#output-tokens).
@@ -239,6 +227,18 @@ _Usage:_
 "The refactor [session](#session) is burning through credit even though the inputs are small."
 
 "[Agent](#agent)'s rewriting whole files instead of patching. Output tokens cost roughly five times the input rate — get it emitting edits and the bill drops."
+
+### Prefix cache
+
+The [provider](#model-provider)-side store that lets consecutive [model provider requests](#model-provider-request) skip re-processing a shared prefix. When the start of a request matches the start of a recent one — same [system prompt](#system-prompt), same history up to some point — the provider reuses its prior work and bills those [tokens](#token) as [cache tokens](#cache-tokens) at a much lower rate.
+
+Anything that changes the prefix (reordering files, rewriting the system prompt mid-[session](#session), injecting a timestamp near the top) invalidates the cache from that point on, and the rest of the request bills at full [input token](#input-tokens) rate.
+
+_Usage:_
+
+"Why did the bill spike halfway through the session?"
+
+"[Harness](#harness) started injecting the current time into the system prompt every [turn](#turn). Prefix cache breaks at the first changed token, so every request after that billed at full rate."
 
 ### Cache tokens
 
