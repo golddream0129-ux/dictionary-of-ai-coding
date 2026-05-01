@@ -33,6 +33,7 @@ That's what this dictionary is for. **The vocabulary of AI coding, translated in
 - [Inference](#inference)
 - [Token](#token)
 - [Next-token prediction](#next-token-prediction)
+- [Non-determinism](#non-determinism)
 - [Model provider](#model-provider)
 - [Harness](#harness)
 - [Model provider request](#model-provider-request)
@@ -187,6 +188,22 @@ What the [model](#model) actually does. Given a [context](#context), it samples 
 "How does the [agent](#agent) 'decide' to call a tool?"
 
 "It doesn't — it's next-token prediction all the way down. The tool call is just a structured string the [harness](#harness) parses out of the output stream."
+
+### Non-determinism
+
+The same input can produce different output. Run a [model](#model) twice with identical [context](#context) and you may get two different answers — sometimes a word, sometimes a completely different approach. Nothing in your code has to change for this to happen.
+
+It's a property of how models generate text, and how [model providers](#model-provider) serve [requests](#model-provider-request). There's no setting you can flip to make it go away.
+
+Expect a spread of results from an [agent](#agent) on the same task. Some days the model will feel sharp; some days it'll feel like it's lost the plot. Same task, different rolls of the dice.
+
+Be careful not to over-narrativize this. Humans are pattern-matching machines, and a string of bad runs can feel like proof that "the model got worse this week." Usually it's just the distribution.
+
+_Usage:_
+
+"Claude has been awful today. Did they ship a worse version?"
+
+"Probably not — model output is non-deterministic. You're going to have good days and bad days on the same task. Try again tomorrow before you go looking for a cause."
 
 ### Model provider
 

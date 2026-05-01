@@ -6,6 +6,7 @@
 - Inference
 - Token
 - Next-token prediction
+- Non-determinism
 - Model provider
 - Harness
 - Model provider request
