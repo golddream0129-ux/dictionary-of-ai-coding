@@ -25,7 +25,7 @@ That's what this dictionary is for. **The vocabulary of AI coding, translated in
 ## Table of contents
 
 <details>
-<summary><a href="#section-1--the-model">Section 1 — The Model</a></summary>
+<summary>Section 1 — The Model</summary>
 
 - [Model](#model)
 - [Parameters](#parameters)
@@ -42,7 +42,7 @@ That's what this dictionary is for. **The vocabulary of AI coding, translated in
 </details>
 
 <details>
-<summary><a href="#section-2--sessions-context-windows--turns">Section 2 — Sessions, Context Windows & Turns</a></summary>
+<summary>Section 2 — Sessions, Context Windows & Turns</summary>
 
 - [Stateless](#stateless)
 - [Context](#context)
@@ -57,7 +57,7 @@ That's what this dictionary is for. **The vocabulary of AI coding, translated in
 </details>
 
 <details>
-<summary><a href="#section-3--tools--environment">Section 3 — Tools & Environment</a></summary>
+<summary>Section 3 — Tools & Environment</summary>
 
 - [Environment](#environment)
 - [Filesystem](#filesystem)
@@ -72,7 +72,7 @@ That's what this dictionary is for. **The vocabulary of AI coding, translated in
 </details>
 
 <details>
-<summary><a href="#section-4--hallucination--why-it-happens">Section 4 — Hallucination & Why It Happens</a></summary>
+<summary>Section 4 — Hallucination & Why It Happens</summary>
 
 - [Hallucination](#hallucination)
 - [Parametric knowledge](#parametric-knowledge)
@@ -86,7 +86,7 @@ That's what this dictionary is for. **The vocabulary of AI coding, translated in
 </details>
 
 <details>
-<summary><a href="#section-5--handoffs">Section 5 — Handoffs</a></summary>
+<summary>Section 5 — Handoffs</summary>
 
 - [Clearing](#clearing)
 - [Handoff](#handoff)
@@ -99,7 +99,7 @@ That's what this dictionary is for. **The vocabulary of AI coding, translated in
 </details>
 
 <details>
-<summary><a href="#section-6--work-that-spans-multiple-context-windows">Section 6 — Work That Spans Multiple Context Windows</a></summary>
+<summary>Section 6 — Work That Spans Multiple Context Windows</summary>
 
 - [Memory system](#memory-system)
 - [AGENTS.md](#agentsmd)
@@ -110,7 +110,7 @@ That's what this dictionary is for. **The vocabulary of AI coding, translated in
 </details>
 
 <details>
-<summary><a href="#section-7--patterns-of-work">Section 7 — Patterns of Work</a></summary>
+<summary>Section 7 — Patterns of Work</summary>
 
 - [Human-in-the-loop](#human-in-the-loop)
 - [AFK](#afk)

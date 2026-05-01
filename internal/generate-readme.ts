@@ -121,7 +121,7 @@ function main(): void {
         .join("\n");
       return [
         "<details>",
-        `<summary><a href="#${headingSlug(s.heading)}">${s.heading}</a></summary>`,
+        `<summary>${s.heading}</summary>`,
         "",
         terms,
         "",
