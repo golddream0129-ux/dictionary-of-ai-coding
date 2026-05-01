@@ -8,6 +8,7 @@
 - Next-token prediction
 - Model provider
 - Model provider request
+- Prefix cache
 - Input tokens
 - Output tokens
 - Cache tokens

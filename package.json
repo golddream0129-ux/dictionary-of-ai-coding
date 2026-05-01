@@ -3,11 +3,13 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "generate": "tsx internal/generate-readme.ts"
+    "generate": "tsx internal/generate-readme.ts",
+    "prepare": "husky"
   },
   "devDependencies": {
+    "@types/node": "^22.10.0",
+    "husky": "^9.1.7",
     "tsx": "^4.19.2",
-    "typescript": "^5.7.2",
-    "@types/node": "^22.10.0"
+    "typescript": "^5.7.2"
   }
 }
