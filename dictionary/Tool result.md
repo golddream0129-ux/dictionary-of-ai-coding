@@ -1,0 +1,3 @@
+What the harness (see [[Harness]]) sends back after executing a tool call (see [[Tool call]]) — the file contents, the command output, the error. The agent (see [[Agent]])'s only window onto the **environment** (see [[Environment]]). Travels back to the model (see [[Model]]) in the *next* model provider request (see [[Model provider request]]), where the model decides what to do with it. Tool call and tool result are two ends of the same exchange, both inside one turn (see [[Turn]]).
+
+*Usage:* "It's reasoning about the file like it's empty." "The tool result came back as a permission denial, not the contents. The model only saw the error string — it has no other window onto the file."

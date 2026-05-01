@@ -1,0 +1,3 @@
+Transferring agent (see [[Agent]]) context (see [[Context]]) from one **session** (see [[Session]]) to another, with no return path. The carry mechanism varies — a written **handoff artifact** (see [[Handoff artifact]]), an in-memory summary (**compaction**, see [[Compaction]]), and others. Distinct from **clearing** (see [[Clearing]]) (no transfer at all). Reasons vary: switching roles (planner → implementer), kicking off an **AFK** (see [[AFK]]) run, fanning out to parallel sessions, or freeing up **context window** (see [[Context window]]) room.
+
+*Usage:* "Planning session is getting heavy — should I just keep going?" "Do a handoff. Write the decisions to a doc, clear, start the implementation in a fresh session reading from it."

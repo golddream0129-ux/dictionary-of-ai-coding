@@ -1,0 +1,5 @@
+The world the [[Agent]] acts on — anything outside the harness (see [[Harness]]) that the agent perceives through tool results (see [[Tool result]]) and changes through tool calls (see [[Tool call]]). The harness *runs* the agent; the environment is what the agent *works in*. A file like `AGENTS.md` (see [[AGENTS.md]]) lives in the environment; the harness is what loads it into the context window (see [[Context window]]). A **filesystem** (see [[Filesystem]]) is the most common kind of environment, but not the only one (a database, a remote API, a browser session can all be environments).
+
+*Avoid:* using "environment" for the runtime or the harness itself — the harness is the wrapper, the environment is the workspace.
+
+*Usage:* "The agent can't see the staging DB schema." "Wire it into the environment — give it a `psql` tool scoped to read-only on staging. The harness is fine, it just has nothing to act on."

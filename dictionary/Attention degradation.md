@@ -1,0 +1,3 @@
+As a session (see [[Session]]) grows, each token (see [[Token]])'s attention budget (see [[Attention budget]]) is spread across more competitors. The signal on any one meaningful relationship (see [[Attention relationship]]) shrinks; noise from irrelevant context (see [[Context]]) crowds in. Same model (see [[Model]]), same parameters (see [[Parameters]]) — just more mouths to feed from the same plate. Cause of the smart zone / dumb zone effect (see [[Smart zone]]).
+
+*Usage:* "It's deep in the dumb zone — inventing generics that aren't in the type file." "Attention degradation. The type definitions are still in context, but the signal on them is buried under everything we've added since. Clear and reload."

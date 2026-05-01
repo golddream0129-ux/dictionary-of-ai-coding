@@ -1,0 +1,3 @@
+A function the harness (see [[Harness]]) exposes for the agent (see [[Agent]]) to call — Read, Write, Bash, Search. Tools are how an agent perceives and acts on the **environment** (see [[Environment]]): it can't see the environment except through tool results (see [[Tool result]]), and can't change it except through tool calls (see [[Tool call]]). Each tool call costs an extra model provider request (see [[Model provider request]]), since the result has to go back to the model before it can decide what to do next.
+
+*Usage:* "Can the agent query staging directly?" "Add a `psql` tool to the harness, scoped read-only on staging. Without a tool for it, the agent's blind to anything outside the filesystem."

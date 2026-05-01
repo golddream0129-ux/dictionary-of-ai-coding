@@ -1,0 +1,3 @@
+Carries no information forward. The **model** (see [[Model]]) is stateless across **model provider requests** (see [[Model provider request]]) — each request resends the full **context window** (see [[Context window]]), because the model has no way to see anything else. An **agent** (see [[Agent]]) is stateless across **sessions** (see [[Session]]) by default: a new session starts empty, with no trace of prior ones. Counterpart to **stateful** (see [[Stateful]]).
+
+*Usage:* "Why does it forget the convention every time I clear?" "The model's stateless — the new session starts empty. If you want it carried, write it to AGENTS.md or a memory file the harness loads at session start."

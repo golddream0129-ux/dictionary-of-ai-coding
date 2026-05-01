@@ -1,0 +1,3 @@
+An [[Agent]] spawned by another agent via a **tool call** (see [[Tool call]]). Runs in its own **session** (see [[Session]]) with its own **context window** (see [[Context window]]), and reports a single **tool result** (see [[Tool result]]) back. Distinct from a **handoff** (see [[Handoff]]) — the parent specifically expects a return; a handoff has no return path. **Cannot spawn further subagents** — the tree is one level deep. Subagents exist to isolate context, not to compose hierarchies.
+
+*Usage:* "The grep results are blowing out my context." "Spawn a subagent to do the search — it'll burn its own context window on the noise and report back the two file paths you actually need."

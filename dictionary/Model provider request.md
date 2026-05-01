@@ -1,0 +1,3 @@
+One round-trip from the harness (see [[Harness]]) to the model provider (see [[Model provider]]). The harness sends the current context (see [[Context]]); the provider returns one response (a tool call (see [[Tool call]]) or a final answer). A single user message can spawn many model provider requests if the agent (see [[Agent]]) calls tools (see [[Tool]]) — each tool result (see [[Tool result]]) triggers another request.
+
+*Usage:* "One question burned forty thousand tokens?" "Look at the tool calls — twelve grep, eight read, four edits. Each tool result spawns another model provider request, and the whole session prefix re-sends every time."
