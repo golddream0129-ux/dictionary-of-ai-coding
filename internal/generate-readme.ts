@@ -100,7 +100,13 @@ function main(): void {
   if (orphans.length) fail(`dictionary/ entries not referenced by Curriculum.md: ${orphans.join(", ")}`);
 
   const block = parts.join("\n").trimEnd() + "\n";
-  writeFileSync(OUTPUT, template.replace(MARKER, block));
+  const banner =
+    "<!--\n" +
+    "  GENERATED FILE — DO NOT EDIT.\n" +
+    "  Source: dictionary/*.md, internal/Curriculum.md, internal/README.template.md\n" +
+    "  Regenerate: npm run generate\n" +
+    "-->\n\n";
+  writeFileSync(OUTPUT, banner + template.replace(MARKER, block));
 }
 
 main();
