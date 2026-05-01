@@ -7,6 +7,7 @@
 - Token
 - Next-token prediction
 - Model provider
+- Harness
 - Model provider request
 - Input tokens
 - Output tokens
@@ -19,7 +20,6 @@
 - Context
 - Context window
 - Stateful
-- Harness
 - Agent
 - System prompt
 - Session

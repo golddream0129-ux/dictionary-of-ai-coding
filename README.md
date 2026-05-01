@@ -34,6 +34,7 @@ That's what this dictionary is for. **The vocabulary of AI coding, translated in
 - [Token](#token)
 - [Next-token prediction](#next-token-prediction)
 - [Model provider](#model-provider)
+- [Harness](#harness)
 - [Model provider request](#model-provider-request)
 - [Input tokens](#input-tokens)
 - [Output tokens](#output-tokens)
@@ -49,7 +50,6 @@ That's what this dictionary is for. **The vocabulary of AI coding, translated in
 - [Context](#context)
 - [Context window](#context-window)
 - [Stateful](#stateful)
-- [Harness](#harness)
 - [Agent](#agent)
 - [System prompt](#system-prompt)
 - [Session](#session)
@@ -198,6 +198,16 @@ Whatever serves a [model](#model) for [inference](#inference). Usually a remote 
 
 "Swap the model provider to a local one — Ollama or llama.cpp on their box. The harness doesn't care, it just hits a different endpoint."
 
+### Harness
+
+Everything around the [model](#model) that turns it into an [agent](#agent): [tools](#tool), [system prompt](#system-prompt), [context-window management](#context-window), permissions, hooks. **Claude.ai** and **Claude Code** run on the same model but behave differently because their harnesses differ.
+
+*Usage:*
+
+"Same model, why is Claude Code editing files and Claude.ai just answering questions?"
+
+"Different harnesses — Claude Code has [filesystem](#filesystem) tools, a different system prompt, and a permission layer. The model isn't the variable here."
+
 ### Model provider request
 
 One round-trip from the [harness](#harness) to the [model provider](#model-provider). The harness sends the current [context](#context); the provider returns one response (a [tool call](#tool-call) or a final answer). A single user message can spawn many model provider requests if the [agent](#agent) calls [tools](#tool) — each [tool result](#tool-result) triggers another request.
@@ -293,16 +303,6 @@ Carries information forward. A [session](#session) is stateful across [turns](#t
 "It remembered my preferences from yesterday — does that mean the model learned them?"
 
 "No, the agent's stateful because the harness wrote them to a memory file and reloaded them at session start. The model itself saw nothing of yesterday."
-
-### Harness
-
-Everything around the [model](#model) that turns it into an [agent](#agent): [tools](#tool), [system prompt](#system-prompt), [context-window management](#context-window), permissions, hooks. **Claude.ai** and **Claude Code** run on the same model but behave differently because their harnesses differ.
-
-*Usage:*
-
-"Same model, why is Claude Code editing files and Claude.ai just answering questions?"
-
-"Different harnesses — Claude Code has [filesystem](#filesystem) tools, a different system prompt, and a permission layer. The model isn't the variable here."
 
 ### Agent
 
