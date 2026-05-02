@@ -574,9 +574,9 @@ As a [session](#session) grows, each [token](#token)'s [attention budget](#atten
 
 ### Smart zone
 
-Early in a [session](#session) the [agent](#agent) is in a "smart zone" — sharp, focused, recall is good. As the session grows it drifts into a "dumb zone": sloppier, forgetful, more mistakes — and more **faithfulness [hallucinations](#hallucination). Same [model](#model), same [harness](#harness) — just more [context](#context). The felt effect of [attention degradation](#attention-degradation). [Clear](#clearing) or [compact](#compaction) when the session bloats; don't push through.
+Early in a [session](#session) the [agent](#agent) is in a "smart zone" — sharp, focused, recall is good. As the session grows it drifts into a "dumb zone": sloppier, forgetful, more mistakes — and more \*\*faithfulness [hallucinations](#hallucination). Same [model](#model), same [harness](#harness) — just more [context](#context). The felt effect of [attention degradation](#attention-degradation). On frontier models, the dumb zone commonly begins around 100,000 tokens - though this is debated. [Clear](#clearing) or [compact](#compaction) when the session bloats; don't push through.
 
-*Usage:*
+_Usage:_
 
 "It nailed the first three components and just butchered the fourth."
 
