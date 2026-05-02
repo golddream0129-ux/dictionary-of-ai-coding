@@ -1,4 +1,5 @@
 ---
+description: Early in a session the agent is sharp and focused. As the session grows it drifts into a dumb zone: sloppier, forgetful, more mistakes.
 aliases:
   - Dumb zone
   - Smart zone / Dumb zone

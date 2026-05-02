@@ -1,4 +1,5 @@
 ---
+description: An isolated environment the agent runs inside — container, VM, or restricted shell. Limits the blast radius of agent actions.
 aliases:
   - Sandboxing
   - Sandbox / Sandboxing

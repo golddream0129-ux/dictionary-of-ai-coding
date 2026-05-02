@@ -1,3 +1,6 @@
+---
+description: Confidently-wrong model output. Two flavors: factuality (invented facts) and faithfulness (drift from loaded context).
+---
 Confidently-wrong [model](./Model.md) output. Two flavors with different causes and fixes:
 
 - *Factuality hallucination* — invented or wrong facts about the world (a function that doesn't exist, a wrong API signature, a fake citation). Caused by [parametric knowledge](./Parametric%20knowledge.md) gaps, often past the [knowledge cutoff](./Knowledge%20cutoff.md). Fix: load the right [contextual knowledge](./Contextual%20knowledge.md).

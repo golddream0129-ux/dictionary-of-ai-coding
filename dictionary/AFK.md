@@ -1,4 +1,5 @@
 ---
+description: Working pattern where the user kicks off a session and leaves the agent to run unattended. Needs sandbox plus permissive permissions.
 aliases:
   - away from keyboard
   - AFK (away from keyboard)

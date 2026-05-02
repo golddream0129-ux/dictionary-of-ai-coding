@@ -1,4 +1,5 @@
 ---
+description: A preset bundling a permission mode with behavioral instructions injected into the system prompt. Can flip mid-session.
 aliases:
   - plan mode
   - accept-edits

@@ -1,3 +1,6 @@
+---
+description: The instructions the harness prepends to every model provider request — the agent's standing brief. Usually stable across a session.
+---
 The instructions the [harness](./Harness.md) prepends to every [model provider request](./Model%20provider%20request.md) — the [agent](./Agent.md)'s standing brief: who it is, how to behave, which [tools](./Tool.md) it can call, what conventions to follow. Usually stable across a [session](./Session.md).
 
 *Usage:*

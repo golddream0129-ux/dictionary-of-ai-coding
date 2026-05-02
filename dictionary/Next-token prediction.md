@@ -1,3 +1,6 @@
+---
+description: What the model actually does. Samples one next token from the context, appends it, and runs again. Its only mode of operation.
+---
 What the [model](./Model.md) actually does. Given a [context](./Context.md), it samples one next [token](./Token.md), appends it, and runs again. Every output — a sentence, a [tool call](./Tool%20call.md), a thousand-line file — is built one token at a time. The model has no other mode of operation.
 
 *Usage:*

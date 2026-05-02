@@ -1,3 +1,6 @@
+---
+description: Loading only the context an agent needs right now, with pointers to the rest. Borrowed from UI design.
+---
 Loading only the [context](./Context.md) an [agent](./Agent.md) needs right now, with pointers to the rest. Borrowed from UI design.
 
 *Usage:*

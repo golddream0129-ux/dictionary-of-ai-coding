@@ -1,3 +1,6 @@
+---
+description: A technique for developing a design concept: the agent interviews the user Socratically, one decision at a time.
+---
 A technique for developing a [design concept](./Design%20concept.md) with an [agent](./Agent.md): the agent interviews the user Socratically, one decision at a time, proposing a recommended answer for each. Slows the rush to a finished plan — no [handoff artifact](./Handoff%20artifact.md) is written until the concept stabilises.
 
 *Usage:*

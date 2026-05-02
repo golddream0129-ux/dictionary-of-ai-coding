@@ -1,3 +1,6 @@
+---
+description: A file in the environment that the harness loads into the context window at session start — the project's standing brief to the agent.
+---
 A file in the [environment](./Environment.md) that the [harness](./Harness.md) loads into the [context window](./Context%20window.md) at [session](./Session.md) start — the project's standing brief to the [agent](./Agent.md). Cross-harness convention.
 
 *Avoid:* using AGENTS.md for content that should be [progressively disclosed](./Progressive%20disclosure.md) — anything in it pays a [token](./Token.md) cost every [turn](./Turn.md).

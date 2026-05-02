@@ -1,4 +1,5 @@
 ---
+description: A working pattern where one or more humans pair with the agent during a session — reviewing, redirecting, or collaborating in real time.
 aliases:
   - HITL
   - Human-in-the-loop (HITL)

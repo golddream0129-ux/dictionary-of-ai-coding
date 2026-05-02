@@ -1,3 +1,6 @@
+---
+description: A function the harness exposes for the agent to call — Read, Write, Bash, Search. How an agent perceives and acts on the environment.
+---
 A function the [harness](./Harness.md) exposes for the [agent](./Agent.md) to call — Read, Write, Bash, Search. Tools are how an agent perceives and acts on the [environment](./Environment.md): it can't see the environment except through [tool results](./Tool%20result.md), and can't change it except through [tool calls](./Tool%20call.md). Each tool call costs an extra [model provider request](./Model%20provider%20request.md), since the result has to go back to the model before it can decide what to do next.
 
 *Usage:*

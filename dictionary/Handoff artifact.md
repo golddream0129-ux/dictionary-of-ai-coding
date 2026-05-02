@@ -1,3 +1,6 @@
+---
+description: A document used as the carry mechanism for a handoff — written by one session to be read by another.
+---
 A document used as the carry mechanism for a [handoff](./Handoff.md) — written by one [session](./Session.md) to be read by another. One way among several (see also **compaction**, [compaction](./Compaction.md)).
 
 *Usage:*

@@ -1,3 +1,6 @@
+---
+description: Tokens the model generates back. Billed at a higher rate than input tokens, since they cost more compute to produce.
+---
 [Tokens](./Token.md) the [model](./Model.md) generates back. Billed at a higher rate than [input tokens](./Input%20tokens.md), since they cost more compute to produce.
 
 *Usage:*

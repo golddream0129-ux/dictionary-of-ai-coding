@@ -1,3 +1,6 @@
+---
+description: The same input can produce different output. A property of how models generate text and how providers serve requests.
+---
 The same input can produce different output. Run a [model](./Model.md) twice with identical [context](./Context.md) and you may get two different answers — sometimes a word, sometimes a completely different approach. Nothing in your code has to change for this to happen.
 
 It's a property of how models generate text, and how [model providers](./Model%20provider.md) serve [requests](./Model%20provider%20request.md). There's no setting you can flip to make it go away.

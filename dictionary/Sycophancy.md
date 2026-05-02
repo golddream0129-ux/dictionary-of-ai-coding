@@ -1,3 +1,6 @@
+---
+description: Confidently agreeable model output. Caused by training that shaped the model to favor answers humans liked — including agreement.
+---
 Confidently agreeable [model](./Model.md) output. Caused by [training](./Training.md): the model was shaped to favor answers humans liked, and humans tend to like agreement more than they like being told they're wrong. So the model learned that agreeing is rewarded — even when the agreement is incorrect.
 
 _Surfaces as:_

@@ -1,3 +1,6 @@
+---
+description: Carries no information forward. The model is stateless across requests; an agent is stateless across sessions by default.
+---
 Carries no information forward. The [model](./Model.md) is stateless across [model provider requests](./Model%20provider%20request.md) — each request resends the full [context window](./Context%20window.md), because the model has no way to see anything else. An [agent](./Agent.md) is stateless across [sessions](./Session.md) by default: a new session starts empty, with no trace of prior ones. Counterpart to [stateful](./Stateful.md).
 
 *Usage:*

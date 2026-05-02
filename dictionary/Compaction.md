@@ -1,3 +1,6 @@
+---
+description: A handoff done in-memory: the previous session's history is summarised and seeds a fresh session. Lossy — detail traded for headroom.
+---
 A [handoff](./Handoff.md) done in-memory: the previous [session](./Session.md)'s history is summarised and seeds a fresh session. Lossy — detail traded for headroom. Triggered manually by the user, or [automatically](./Autocompact.md).
 
 *Usage:*

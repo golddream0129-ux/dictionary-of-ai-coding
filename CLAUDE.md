@@ -4,6 +4,8 @@ Links to other entries should only have a link on the first occurrence. I.e. if 
 
 New entries must be added to dictionary/, and found a place in internal/Curriculum.md
 
+Each entry must have a `description` field in the frontmatter. Each description must be less than 140 characters long.
+
 ## Agent skills
 
 ### Issue tracker
