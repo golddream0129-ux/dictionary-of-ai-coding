@@ -66,6 +66,7 @@ That's what this dictionary is for. **The vocabulary of AI coding, translated in
 - [Tool](#tool)
 - [Tool call](#tool-call)
 - [Tool result](#tool-result)
+- [MCP](#mcp)
 - [Permission request](#permission-request)
 - [Permission mode](#permission-mode)
 - [Agent mode](#agent-mode)
@@ -417,6 +418,16 @@ What the [harness](#harness) sends back after executing a [tool call](#tool-call
 "It's reasoning about the file like it's empty."
 
 "The tool result came back as a permission denial, not the contents. The model only saw the error string — it has no other window onto the file."
+
+### MCP
+
+**Model Context Protocol.** A protocol for plugging external tool servers into a [harness](#harness) — how an [agent](#agent) gets [tools](#tool) beyond what the harness ships with. The agent never "calls MCP"; it calls a tool, and the harness happens to have gotten that tool from an MCP server. Also exposes resources (read-only data) and prompts (reusable templates), but tool provision is the primary use.
+
+_Usage:_
+
+"The agent needs to read tickets from Linear."
+
+"Configure the harness to use the Linear MCP server — it exposes the Linear API as tools the agent can call. Saves you writing custom tool wrappers."
 
 ### Permission request
 

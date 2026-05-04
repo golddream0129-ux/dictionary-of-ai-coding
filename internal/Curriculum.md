@@ -33,6 +33,7 @@
 - Tool
 - Tool call
 - Tool result
+- MCP
 - Permission request
 - Permission mode
 - Agent mode
