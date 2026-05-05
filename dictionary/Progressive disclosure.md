@@ -1,9 +1,10 @@
 ---
-description: Loading only the context an agent needs right now, with pointers to the rest. Borrowed from UI design.
+description: Loading only the context an agent needs right now, with context pointers to the rest. Borrowed from UI design.
 ---
-Loading only the [context](./Context.md) an [agent](./Agent.md) needs right now, with pointers to the rest. Borrowed from UI design.
 
-*Usage:*
+Loading only the [context](./Context.md) an [agent](./Agent.md) needs right now, with [context pointers](./Context%20pointer.md) to the rest. Borrowed from UI design.
+
+_Usage:_
 
 "Should I dump the entire style guide into [AGENTS.md](./AGENTS.md.md)?"
 

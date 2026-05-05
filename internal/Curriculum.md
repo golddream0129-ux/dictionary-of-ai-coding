@@ -66,6 +66,7 @@
 - Memory system
 - AGENTS.md
 - Progressive disclosure
+- Context pointer
 - Skill
 - Subagent
 

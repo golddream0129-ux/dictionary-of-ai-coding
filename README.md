@@ -118,6 +118,7 @@ That's what this dictionary is for. **The vocabulary of AI coding, translated in
 - [Memory system](#memory-system)
 - [AGENTS.md](#agentsmd)
 - [Progressive disclosure](#progressive-disclosure)
+- [Context pointer](#context-pointer)
 - [Skill](#skill)
 - [Subagent](#subagent)
 
@@ -701,21 +702,33 @@ A file in the [environment](#environment) that the [harness](#harness) loads int
 
 ### Progressive disclosure
 
-Loading only the [context](#context) an [agent](#agent) needs right now, with pointers to the rest. Borrowed from UI design.
+Loading only the [context](#context) an [agent](#agent) needs right now, with [context pointers](#context-pointer) to the rest. Borrowed from UI design.
 
-*Usage:*
+_Usage:_
 
 "Should I dump the entire style guide into [AGENTS.md](#agentsmd)?"
 
 "No — progressive disclosure. Reference the style guide as a [skill](#skill) the agent loads when it actually needs to write a component. AGENTS.md pays the [token](#token) cost every [turn](#turn)."
 
+### Context pointer
+
+A mention in one document that points to another, so the [agent](#agent) can pull it into the [context window](#context-window) only when the task calls for it. The unit [progressive disclosure](#progressive-disclosure) is built from.
+
+_Avoid:_ "reference" — too dry; doesn't convey that following it pulls more context in. "Portal" — too florid.
+
+_Usage:_
+
+"AGENTS.md is getting huge."
+
+"Most of it should be context pointers, not content. Keep the always-on rules inline; turn the deploy runbook and the style guide into [skills](#skill) and leave a context pointer behind."
+
 ### Skill
 
-A teachable capability bundled as a unit — instructions and resources for doing one task well, kept in the [environment](#environment) and loaded into the [context window](#context-window) only when relevant. The unit of [progressive disclosure](#progressive-disclosure) in a [harness](#harness).
+A teachable capability bundled as a unit — instructions and resources for doing one task well, kept in the [environment](#environment) until a [context pointer](#context-pointer) pulls it into the [context window](#context-window) for the task at hand. The unit of [progressive disclosure](#progressive-disclosure) in a [harness](#harness).
 
-*Avoid:* "[tool](#tool)" — a tool is what the [agent](#agent) *calls*; a skill is instructions it *reads*.
+_Avoid:_ "[tool](#tool)" — a tool is what the [agent](#agent) _calls_; a skill is instructions it _reads_.
 
-*Usage:*
+_Usage:_
 
 "Where should I put the deploy runbook?"
 

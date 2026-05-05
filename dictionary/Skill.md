@@ -1,11 +1,12 @@
 ---
-description: A teachable capability bundled as a unit — instructions and resources for one task, loaded into context only when relevant.
+description: A teachable capability bundled as a unit — kept out of the context window until a context pointer pulls it in for the task at hand.
 ---
-A teachable capability bundled as a unit — instructions and resources for doing one task well, kept in the [environment](./Environment.md) and loaded into the [context window](./Context%20window.md) only when relevant. The unit of [progressive disclosure](./Progressive%20disclosure.md) in a [harness](./Harness.md).
 
-*Avoid:* "[tool](./Tool.md)" — a tool is what the [agent](./Agent.md) *calls*; a skill is instructions it *reads*.
+A teachable capability bundled as a unit — instructions and resources for doing one task well, kept in the [environment](./Environment.md) until a [context pointer](./Context%20pointer.md) pulls it into the [context window](./Context%20window.md) for the task at hand. The unit of [progressive disclosure](./Progressive%20disclosure.md) in a [harness](./Harness.md).
 
-*Usage:*
+_Avoid:_ "[tool](./Tool.md)" — a tool is what the [agent](./Agent.md) _calls_; a skill is instructions it _reads_.
+
+_Usage:_
 
 "Where should I put the deploy runbook?"
 
