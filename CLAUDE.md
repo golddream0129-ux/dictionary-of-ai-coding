@@ -16,6 +16,8 @@ Write in a plain, de-hyped register. No selling the concept: avoid superlatives 
 
 The first sentence used in a paragraph must be extra-clear. Don't attempt to pre-hype the paragraph by using a clever phrase first.
 
+Whenever a new entry is added, search through all other entries to see if it can be referenced there. The presence of a new term may be able to reduce verbosity in other entries.
+
 ## Agent skills
 
 ### Issue tracker

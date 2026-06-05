@@ -8,7 +8,7 @@ The agent only sees the environment when it looks. Everything it knows about the
 
 The environment is also the layer that persists — the only one that is always [stateful](./Stateful.md). A [session](./Session.md)'s context is gone when the session ends, but files written to the environment remain for the next session to read — which is what [memory systems](./Memory%20system.md), [handoff artifacts](./Handoff%20artifact.md), and `AGENTS.md` rely on. Anything an agent should still know tomorrow has to end up in the environment.
 
-You decide how big the environment is. A [sandbox](./Sandbox.md) shrinks it, limiting what the agent can reach; adding a [tool](./Tool.md) extends it, bringing a database or an API into reach. What's inside the boundary is what the agent can perceive and change; everything outside it doesn't exist for the agent.
+You decide how big the environment is. A [sandbox](./Sandbox.md) shrinks it, limiting what the agent can reach; adding a [tool](./Tool.md) extends it, bringing a database or an API into reach. What's inside the boundary is what the agent can perceive and change; everything outside it doesn't exist for the agent. How well the environment is set up to support the agent's work is the codebase's [AX](./AX.md).
 
 _Avoid:_ using "environment" for the runtime or the harness itself — the harness is the wrapper, the environment is the workspace.
 
