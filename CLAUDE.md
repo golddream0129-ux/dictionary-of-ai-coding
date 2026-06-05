@@ -10,6 +10,12 @@ Co-locate each concept with the real-life problem it explains. Where a term has 
 
 Each entry should be at least 200 words long (counting the body and the Usage dialogue, not the frontmatter). Reach the minimum with substance — mechanism, symptom, what to do about it — never with padding.
 
+Prefer tables for structured material: lifecycles (step / who / what happens), ladders of options, and similar. See `dictionary/Tool call.md` and `dictionary/Permission mode.md` for examples. Don't force prose into a table when it isn't naturally stepped or comparative.
+
+Write in a plain, de-hyped register. No selling the concept: avoid superlatives ("the cheapest medium there is"), dramatised moments ("You'll recognise the moment", "That's the signal to"), and emphasis words like "core", "whole value", "real power", "straight into". State what happens and what to do, flatly.
+
+The first sentence used in a paragraph must be extra-clear. Don't attempt to pre-hype the paragraph by using a clever phrase first.
+
 ## Agent skills
 
 ### Issue tracker

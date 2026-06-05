@@ -2,7 +2,13 @@
 description: A document used as the carry mechanism for a handoff — written by one session to be read by another.
 ---
 
-A document used as the carry mechanism for a [handoff](./Handoff.md) — written by one [session](./Session.md) to be read by another. One way among several (see also **compaction**, [compaction](./Compaction.md)).
+A document used as the carry mechanism for a [handoff](./Handoff.md) — written to the [environment](./Environment.md) by one [session](./Session.md) to be read by another. [Specs](./Spec.md), [tickets](./Ticket.md), and plan docs are all handoff artifacts.
+
+The reason to write one: the [model](./Model.md) is [stateless](./Stateless.md), so nothing in a session survives [clearing](./Clearing.md) it. Decisions, constraints, half-finished plans — all gone with the [context](./Context.md) that held them. The environment persists. Writing the important state into a file moves it somewhere the next session can read it back from.
+
+A good artifact is written to be read into a session that has zero context. Concrete file paths rather than "the file we discussed". What was decided and why, so the next session doesn't relitigate it. What's done and what's left. It helps to tell the writing session where the artifact is headed: "write a handoff doc for a fresh session that knows nothing about this work".
+
+The alternative carry mechanism is [compaction](./Compaction.md), which summarises in-memory. The artifact has two advantages: it lives on disk where you can read and correct it before anything depends on it, and it can be reused — the same spec can brief five parallel sessions.
 
 _Usage:_
 

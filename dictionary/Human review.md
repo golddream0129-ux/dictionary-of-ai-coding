@@ -4,11 +4,15 @@ description: The user reading the code the agent produced and forming a judgemen
 
 The user reading the code the [agent](./Agent.md) produced and forming a judgement on it. Reading the diff or the changed files counts; reading the agent's _description_ of what it did does not — narration is not the artifact.
 
-_Avoid:_ "code review" alone — ambiguous between human and [automated](./Automated%20review.md).
+Agents raise the volume of code produced, so review becomes the bottleneck. One useful idea is layering different review strategies. [Automated checks](./Automated%20check.md) catch the mechanical failures, [automated review](./Automated%20review.md) catches the describable ones, and human review is reserved for what only you can judge — whether the change is the right change, whether the approach fits the codebase, whether this should exist at all.
+
+Review is also cheaper earlier. Reading a plan before work starts, or a small diff mid-flight, takes minutes; excavating a finished branch after an [AFK](./AFK.md) run takes longer. Where you place the review checkpoint is a [human-in-the-loop](./Human-in-the-loop.md) decision, not an afterthought.
+
+_Avoid:_ "code review" alone — ambiguous between human and automated.
 
 _Usage:_
 
-"I human-reviewed the [AFK](./AFK.md) output."
+"I human-reviewed the AFK output."
 
 "You read the diff or just the summary?"
 

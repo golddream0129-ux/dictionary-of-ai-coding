@@ -80,3 +80,4 @@
 - Vibe coding
 - Design concept
 - Grilling
+- Prototyping
