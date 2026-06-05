@@ -1,9 +1,10 @@
 ---
 description: Ending the current session and starting a fresh one. The next message begins with an empty session and an empty context window.
 ---
+
 Ending the current [session](./Session.md) and starting a fresh one. The next message begins with an empty session and an empty [context window](./Context%20window.md). Usually user-driven.
 
-*Usage:*
+_Usage:_
 
 "It's stuck looping on the failing test."
 

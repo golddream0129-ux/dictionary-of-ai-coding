@@ -1,9 +1,10 @@
 ---
 description: A system that attempts to make an agent stateful across sessions by persisting to the environment and reloading at session start.
 ---
+
 A system that attempts to make an [agent](./Agent.md) [stateful](./Stateful.md) across [sessions](./Session.md). Persists information into the [environment](./Environment.md) during a session and reloads it into the [context window](./Context%20window.md) at the start of future ones, so the agent carries continuity beyond the user [clearing](./Clearing.md) the session.
 
-*Usage:*
+_Usage:_
 
 "I keep having to re-tell it I'm on Postgres, not MySQL."
 

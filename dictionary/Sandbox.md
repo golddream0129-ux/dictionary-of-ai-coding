@@ -4,9 +4,10 @@ aliases:
   - Sandboxing
   - Sandbox / Sandboxing
 ---
+
 An isolated [environment](./Environment.md) the [agent](./Agent.md) runs inside — a container, VM, ephemeral [filesystem](./Filesystem.md), or restricted-permission shell. Limits the blast radius of agent actions: even if the agent runs destructive commands or fetches something malicious, the damage is contained. The safety substrate that makes [AFK](./AFK.md) practical.
 
-*Usage:*
+_Usage:_
 
 "I want to let it run [bypass-permissions](./Agent%20mode.md) overnight but I'm not ready for that."
 

@@ -1,11 +1,12 @@
 ---
 description: A model harnessed with tools, a system prompt, and a context window, that takes turns with a user. The model in motion.
 ---
-A [model](./Model.md) [harnessed](./Harness.md) with [tools](./Tool.md), a [system prompt](./System%20prompt.md), and a [context window](./Context%20window.md), that takes [turns](./Turn.md) with a user. *Claude Code is an agent. Cursor is an agent. Claude.ai is an agent.* An agent is what you actually talk to — it's the model in motion, configured for a purpose.
 
-*Avoid:* "the AI", "the bot" (too vague — they hide whether you mean the parameters or the harnessed thing).
+A [model](./Model.md) [harnessed](./Harness.md) with [tools](./Tool.md), a [system prompt](./System%20prompt.md), and a [context window](./Context%20window.md), that takes [turns](./Turn.md) with a user. _Claude Code is an agent. Cursor is an agent. Claude.ai is an agent._ An agent is what you actually talk to — it's the model in motion, configured for a purpose.
 
-*Usage:*
+_Avoid:_ "the AI", "the bot" (too vague — they hide whether you mean the parameters or the harnessed thing).
+
+_Usage:_
 
 "Which agent are you using for the migration?"
 

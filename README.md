@@ -144,7 +144,7 @@ That's what this dictionary is for. **The vocabulary of AI coding, translated in
 
 The [parameters](#parameters). [Stateless](#stateless) — does [next-token prediction](#next-token-prediction) and nothing else. "Claude Opus 4.7" and "GPT-5" are models. On its own a model can't do anything agentic; it has to be [harnessed](#harness).
 
-*Usage:*
+_Usage:_
 
 "Should we switch the model from Sonnet to Opus for the planning step?"
 
@@ -152,9 +152,9 @@ The [parameters](#parameters). [Stateless](#stateless) — does [next-token pred
 
 ### Parameters
 
-The numbers inside a [model](#model) — often billions of them — tuned during [training](#training). Everything the model "knows" lives in them. Training sets them; [inference](#inference) uses them unchanged. Also called *weights*.
+The numbers inside a [model](#model) — often billions of them — tuned during [training](#training). Everything the model "knows" lives in them. Training sets them; [inference](#inference) uses them unchanged. Also called _weights_.
 
-*Usage:*
+_Usage:_
 
 "Can we fine-tune it on our codebase?"
 
@@ -164,7 +164,7 @@ The numbers inside a [model](#model) — often billions of them — tuned during
 
 The process that sets a [model](#model)'s [parameters](#parameters), by exposing it to vast amounts of text and adjusting parameters to improve [next-token prediction](#next-token-prediction). A one-time, expensive process done by the [model provider](#model-provider). Encompasses both pre-training (the bulk run) and post-training (later refinements like instruction-following and safety); the distinction doesn't matter at this glossary's level.
 
-*Usage:*
+_Usage:_
 
 "Can we get it to know our internal API?"
 
@@ -174,7 +174,7 @@ The process that sets a [model](#model)'s [parameters](#parameters), by exposing
 
 Running a trained [model](#model) to generate output — what happens on every [model provider request](#model-provider-request). [Parameters](#parameters) stay fixed; the model just does [next-token prediction](#next-token-prediction) over the [context](#context) it's given. Cheap relative to [training](#training), but billed per [token](#token) and the dominant cost of using a model.
 
-*Usage:*
+_Usage:_
 
 "Why does the bill scale with usage instead of being a flat license?"
 
@@ -184,9 +184,9 @@ Running a trained [model](#model) to generate output — what happens on every [
 
 The atomic unit a [model](#model) reads and writes. Roughly word-sized but not exactly — common words are one token, rare or long ones split into several. [Context window](#context-window) size, cost, and latency are all counted in tokens.
 
-*Avoid:* "word" — token boundaries don't match word boundaries, and tokens-per-second / tokens-per-dollar are the units that actually matter.
+_Avoid:_ "word" — token boundaries don't match word boundaries, and tokens-per-second / tokens-per-dollar are the units that actually matter.
 
-*Usage:*
+_Usage:_
 
 "How big is this prompt going to be?"
 
@@ -196,7 +196,7 @@ The atomic unit a [model](#model) reads and writes. Roughly word-sized but not e
 
 What the [model](#model) actually does. Given a [context](#context), it samples one next [token](#token), appends it, and runs again. Every output — a sentence, a [tool call](#tool-call), a thousand-line file — is built one token at a time. The model has no other mode of operation.
 
-*Usage:*
+_Usage:_
 
 "How does the [agent](#agent) 'decide' to call a tool?"
 
@@ -222,7 +222,7 @@ _Usage:_
 
 Whatever serves a [model](#model) for [inference](#inference). Usually a remote service (Anthropic, OpenAI, Google), but can also be local — Ollama, LM Studio, llama.cpp running on your own machine. The [harness](#harness) doesn't run the model itself; it asks a provider to.
 
-*Usage:*
+_Usage:_
 
 "Can we run this offline for the air-gapped client?"
 
@@ -232,7 +232,7 @@ Whatever serves a [model](#model) for [inference](#inference). Usually a remote 
 
 Everything around the [model](#model) that turns it into an [agent](#agent): [tools](#tool), [system prompt](#system-prompt), [context-window management](#context-window), permissions, hooks. **Claude.ai** and **Claude Code** run on the same model but behave differently because their harnesses differ.
 
-*Usage:*
+_Usage:_
 
 "Same model, why is Claude Code editing files and Claude.ai just answering questions?"
 
@@ -242,7 +242,7 @@ Everything around the [model](#model) that turns it into an [agent](#agent): [to
 
 One round-trip from the [harness](#harness) to the [model provider](#model-provider). The harness sends the current [context](#context); the provider returns one response (a [tool call](#tool-call) or a final answer). A single user message can spawn many model provider requests if the [agent](#agent) calls [tools](#tool) — each [tool result](#tool-result) triggers another request.
 
-*Usage:*
+_Usage:_
 
 "One question burned forty thousand [tokens](#token)?"
 
@@ -252,7 +252,7 @@ One round-trip from the [harness](#harness) to the [model provider](#model-provi
 
 [Tokens](#token) the [harness](#harness) sends on each [model provider request](#model-provider-request). Billed at a lower rate than [output tokens](#output-tokens).
 
-*Usage:*
+_Usage:_
 
 "Bill's high but the [agent](#agent)'s barely writing anything."
 
@@ -262,7 +262,7 @@ One round-trip from the [harness](#harness) to the [model provider](#model-provi
 
 [Tokens](#token) the [model](#model) generates back. Billed at a higher rate than [input tokens](#input-tokens), since they cost more compute to produce.
 
-*Usage:*
+_Usage:_
 
 "The refactor [session](#session) is burning through credit even though the inputs are small."
 
@@ -284,7 +284,7 @@ _Usage:_
 
 [Input tokens](#input-tokens) the [provider](#model-provider) has cached from a previous [model provider request](#model-provider-request) so it doesn't have to re-process them. When consecutive requests share a prefix, the provider reuses the work via its [prefix cache](#prefix-cache) and bills the cached portion at a much lower rate. The lever that makes long [sessions](#session) affordable — without it, every [turn](#turn) re-pays for the whole history.
 
-*Usage:*
+_Usage:_
 
 "Cost on long sessions is brutal — eight bucks for a refactor."
 
@@ -296,7 +296,7 @@ _Usage:_
 
 Carries no information forward. The [model](#model) is stateless across [model provider requests](#model-provider-request) — each request resends the full [context window](#context-window), because the model has no way to see anything else. An [agent](#agent) is stateless across [sessions](#session) by default: a new session starts empty, with no trace of prior ones. Counterpart to [stateful](#stateful).
 
-*Usage:*
+_Usage:_
 
 "Why does it forget the convention every time I [clear](#clearing)?"
 
@@ -304,9 +304,9 @@ Carries no information forward. The [model](#model) is stateless across [model p
 
 ### Context
 
-The relevant information the [agent](#agent) has access to right now. The abstract noun — not the raw input the model sees (that's the [context window](#context-window)), not the running history (that's the [session](#session)), but *what the agent knows that's pertinent to the task*. "Loading something into context" means making it part of this set; "context engineering" is the discipline of curating it.
+The relevant information the [agent](#agent) has access to right now. The abstract noun — not the raw input the model sees (that's the [context window](#context-window)), not the running history (that's the [session](#session)), but _what the agent knows that's pertinent to the task_. "Loading something into context" means making it part of this set; "context engineering" is the discipline of curating it.
 
-*Usage:*
+_Usage:_
 
 "It keeps inventing fields that aren't in the type."
 
@@ -314,11 +314,11 @@ The relevant information the [agent](#agent) has access to right now. The abstra
 
 ### Context window
 
-Everything the [model](#model) sees on each [model provider request](#model-provider-request). Finite, model-specific, and the *only* surface through which the model perceives anything.
+Everything the [model](#model) sees on each [model provider request](#model-provider-request). Finite, model-specific, and the _only_ surface through which the model perceives anything.
 
-*Avoid:* "memory" — the context window is working state and doesn't persist across [sessions](#session). [Memory](#memory-system) is a separate concept layered on top.
+_Avoid:_ "memory" — the context window is working state and doesn't persist across [sessions](#session). [Memory](#memory-system) is a separate concept layered on top.
 
-*Usage:*
+_Usage:_
 
 "Can I just paste the whole monorepo into the prompt?"
 
@@ -328,7 +328,7 @@ Everything the [model](#model) sees on each [model provider request](#model-prov
 
 Carries information forward. A [session](#session) is stateful across [turns](#turn) — [context](#context) accumulates as the session runs, which is why long sessions drift into the [dumb zone](#smart-zone). An [agent](#agent) can be made stateful across **sessions** by adding a [memory system](#memory-system) that persists information into the [environment](#environment) and reloads it at the start of future sessions. The [model](#model) is never stateful; any apparent continuity is the [harness](#harness) re-feeding context. Counterpart to [stateless](#stateless).
 
-*Usage:*
+_Usage:_
 
 "It remembered my preferences from yesterday — does that mean the model learned them?"
 
@@ -336,11 +336,11 @@ Carries information forward. A [session](#session) is stateful across [turns](#t
 
 ### Agent
 
-A [model](#model) [harnessed](#harness) with [tools](#tool), a [system prompt](#system-prompt), and a [context window](#context-window), that takes [turns](#turn) with a user. *Claude Code is an agent. Cursor is an agent. Claude.ai is an agent.* An agent is what you actually talk to — it's the model in motion, configured for a purpose.
+A [model](#model) [harnessed](#harness) with [tools](#tool), a [system prompt](#system-prompt), and a [context window](#context-window), that takes [turns](#turn) with a user. _Claude Code is an agent. Cursor is an agent. Claude.ai is an agent._ An agent is what you actually talk to — it's the model in motion, configured for a purpose.
 
-*Avoid:* "the AI", "the bot" (too vague — they hide whether you mean the parameters or the harnessed thing).
+_Avoid:_ "the AI", "the bot" (too vague — they hide whether you mean the parameters or the harnessed thing).
 
-*Usage:*
+_Usage:_
 
 "Which agent are you using for the migration?"
 
@@ -350,7 +350,7 @@ A [model](#model) [harnessed](#harness) with [tools](#tool), a [system prompt](#
 
 The instructions the [harness](#harness) prepends to every [model provider request](#model-provider-request) — the [agent](#agent)'s standing brief: who it is, how to behave, which [tools](#tool) it can call, what conventions to follow. Usually stable across a [session](#session).
 
-*Usage:*
+_Usage:_
 
 "Two harnesses, same [model](#model), totally different behavior on the same prompt."
 
@@ -358,9 +358,9 @@ The instructions the [harness](#harness) prepends to every [model provider reque
 
 ### Session
 
-One bounded run of interaction with an [agent](#agent). Starts empty, accumulates messages, [tool results](#tool-result), and files read, and ends when [cleared](#clearing), closed, or [compacted](#compaction) into a fresh session. The session is what *fills* the [context window](#context-window): if the context window is the box, the session is the stuff slowly filling it up. Work too large for a single context window must be split across sessions.
+One bounded run of interaction with an [agent](#agent). Starts empty, accumulates messages, [tool results](#tool-result), and files read, and ends when [cleared](#clearing), closed, or [compacted](#compaction) into a fresh session. The session is what _fills_ the [context window](#context-window): if the context window is the box, the session is the stuff slowly filling it up. Work too large for a single context window must be split across sessions.
 
-*Usage:*
+_Usage:_
 
 "How long can one session run before it falls apart?"
 
@@ -370,7 +370,7 @@ One bounded run of interaction with an [agent](#agent). Starts empty, accumulate
 
 One user message plus everything the [agent](#agent) does in response, up until it yields back to the user. Contains one or more [model provider requests](#model-provider-request) — many, if the agent calls [tools](#tool). A clarifying question closes the turn; your reply opens the next one. The hierarchy is [session](#session) **> Turn > Model provider request**.
 
-*Usage:*
+_Usage:_
 
 "One turn took two minutes?"
 
@@ -380,11 +380,11 @@ One user message plus everything the [agent](#agent) does in response, up until 
 
 ### Environment
 
-The world the [agent](#agent) acts on — anything outside the [harness](#harness) that the agent perceives through [tool results](#tool-result) and changes through [tool calls](#tool-call). The harness *runs* the agent; the environment is what the agent *works in*. A file like [`AGENTS.md`](#agentsmd) lives in the environment; the harness is what loads it into the [context window](#context-window). A [filesystem](#filesystem) is the most common kind of environment, but not the only one (a database, a remote API, a browser session can all be environments).
+The world the [agent](#agent) acts on — anything outside the [harness](#harness) that the agent perceives through [tool results](#tool-result) and changes through [tool calls](#tool-call). The harness _runs_ the agent; the environment is what the agent _works in_. A file like [`AGENTS.md`](#agentsmd) lives in the environment; the harness is what loads it into the [context window](#context-window). A [filesystem](#filesystem) is the most common kind of environment, but not the only one (a database, a remote API, a browser session can all be environments).
 
-*Avoid:* using "environment" for the runtime or the harness itself — the harness is the wrapper, the environment is the workspace.
+_Avoid:_ using "environment" for the runtime or the harness itself — the harness is the wrapper, the environment is the workspace.
 
-*Usage:*
+_Usage:_
 
 "The agent can't see the staging DB schema."
 
@@ -394,7 +394,7 @@ The world the [agent](#agent) acts on — anything outside the [harness](#harnes
 
 A tree of files and directories the [agent](#agent) reads from, writes to, and executes within — the default kind of [environment](#environment) for a coding agent. [AGENTS.md](#agentsmd), [skills](#skill), source code, build scripts, and [tool](#tool) configs all live in a filesystem. When a [harness](#harness) "starts in your project," it's pointing the agent at a filesystem.
 
-*Usage:*
+_Usage:_
 
 "Why isn't it picking up my AGENTS.md?"
 
@@ -404,7 +404,7 @@ A tree of files and directories the [agent](#agent) reads from, writes to, and e
 
 A function the [harness](#harness) exposes for the [agent](#agent) to call — Read, Write, Bash, Search. Tools are how an agent perceives and acts on the [environment](#environment): it can't see the environment except through [tool results](#tool-result), and can't change it except through [tool calls](#tool-call). Each tool call costs an extra [model provider request](#model-provider-request), since the result has to go back to the model before it can decide what to do next.
 
-*Usage:*
+_Usage:_
 
 "Can the agent query staging directly?"
 
@@ -414,7 +414,7 @@ A function the [harness](#harness) exposes for the [agent](#agent) to call — R
 
 The [model](#model)'s output naming a [tool](#tool) and its arguments — just structured text. It doesn't do anything on its own; the [harness](#harness) has to read it and execute. Produced by the model in one [model provider request](#model-provider-request).
 
-*Usage:*
+_Usage:_
 
 "It said it ran the tests but the file timestamps haven't changed."
 
@@ -422,9 +422,9 @@ The [model](#model)'s output naming a [tool](#tool) and its arguments — just s
 
 ### Tool result
 
-What the [harness](#harness) sends back after executing a [tool call](#tool-call) — the file contents, the command output, the error. The [agent](#agent)'s only window onto the [environment](#environment). Travels back to the [model](#model) in the *next* [model provider request](#model-provider-request), where the model decides what to do with it. Tool call and tool result are two ends of the same exchange, both inside one [turn](#turn).
+What the [harness](#harness) sends back after executing a [tool call](#tool-call) — the file contents, the command output, the error. The [agent](#agent)'s only window onto the [environment](#environment). Travels back to the [model](#model) in the _next_ [model provider request](#model-provider-request), where the model decides what to do with it. Tool call and tool result are two ends of the same exchange, both inside one [turn](#turn).
 
-*Usage:*
+_Usage:_
 
 "It's reasoning about the file like it's empty."
 
@@ -444,7 +444,7 @@ _Usage:_
 
 What the [harness](#harness) shows the user before executing a [tool call](#tool-call) that isn't pre-approved. The [model](#model) produces a tool call; instead of running it immediately, the harness pauses and asks. Approve and it runs; deny and the harness reports the denial back to the model as a [tool result](#tool-result). The mechanism by which a harness puts a human in the [loop](#human-in-the-loop) for risky or sensitive actions.
 
-*Usage:*
+_Usage:_
 
 "It's been blocked on a permission request for ten minutes — I was in a meeting."
 
@@ -454,7 +454,7 @@ What the [harness](#harness) shows the user before executing a [tool call](#tool
 
 The permission-gating slice of an [agent mode](#agent-mode) — which [tool calls](#tool-call) trigger a [permission request](#permission-request) and which run automatically. The original purpose of mode systems before [harnesses](#harness) started bundling behavioral instructions on top.
 
-*Usage:*
+_Usage:_
 
 "It paused on every grep — totally killed the [AFK](#afk) run."
 
@@ -464,9 +464,9 @@ The permission-gating slice of an [agent mode](#agent-mode) — which [tool call
 
 A preset that shapes how the [agent](#agent) operates at runtime — bundles a [permission mode](#permission-mode) with behavioral instructions injected into the [system prompt](#system-prompt). Examples: a default that prompts on risky calls, a **plan mode** that blocks edits and steers the agent toward research, an **accept-edits** mode that auto-approves edits, a **bypass permissions** mode (colloquially **YOLO mode**) that auto-approves everything. Can flip [mid-session](#session).
 
-*Vendor terms:* Claude Code calls these "permission modes," Codex calls them "approval modes" — both predate behavioral bundling.
+_Vendor terms:_ Claude Code calls these "permission modes," Codex calls them "approval modes" — both predate behavioral bundling.
 
-*Usage:*
+_Usage:_
 
 "It keeps editing files when I just want a plan."
 
@@ -480,7 +480,7 @@ A preset that shapes how the [agent](#agent) operates at runtime — bundles a [
 
 An isolated [environment](#environment) the [agent](#agent) runs inside — a container, VM, ephemeral [filesystem](#filesystem), or restricted-permission shell. Limits the blast radius of agent actions: even if the agent runs destructive commands or fetches something malicious, the damage is contained. The safety substrate that makes [AFK](#afk) practical.
 
-*Usage:*
+_Usage:_
 
 "I want to let it run [bypass-permissions](#agent-mode) overnight but I'm not ready for that."
 
@@ -515,12 +515,12 @@ _Usage:_
 
 Confidently-wrong [model](#model) output. Two flavors with different causes and fixes:
 
-- *Factuality hallucination* — invented or wrong facts about the world (a function that doesn't exist, a wrong API signature, a fake citation). Caused by [parametric knowledge](#parametric-knowledge) gaps, often past the [knowledge cutoff](#knowledge-cutoff). Fix: load the right [contextual knowledge](#contextual-knowledge).
-- *Faithfulness hallucination* — output drifts from the **contextual knowledge** that's loaded, the user's instructions, or the model's own prior reasoning. Symptom of [attention degradation](#attention-degradation); worsens in the [dumb zone](#smart-zone). Fix: [clear](#clearing) or [compact](#compaction).
+- _Factuality hallucination_ — invented or wrong facts about the world (a function that doesn't exist, a wrong API signature, a fake citation). Caused by [parametric knowledge](#parametric-knowledge) gaps, often past the [knowledge cutoff](#knowledge-cutoff). Fix: load the right [contextual knowledge](#contextual-knowledge).
+- _Faithfulness hallucination_ — output drifts from the **contextual knowledge** that's loaded, the user's instructions, or the model's own prior reasoning. Symptom of [attention degradation](#attention-degradation); worsens in the [dumb zone](#smart-zone). Fix: [clear](#clearing) or [compact](#compaction).
 
-*Avoid:* "hallucination" as a bare synonym for "wrong" — without naming the flavor, the term has no diagnostic value.
+_Avoid:_ "hallucination" as a bare synonym for "wrong" — without naming the flavor, the term has no diagnostic value.
 
-*Usage:*
+_Usage:_
 
 "It hallucinated a `parseAsync` method on the schema."
 
@@ -534,7 +534,7 @@ Confidently-wrong [model](#model) output. Two flavors with different causes and 
 
 What the [model](#model) "knows" from [training](#training), stored in its [parameters](#parameters). Frozen at training time — the model can't see its own parameters or update them. Detail is lost in the squeeze: billions of facts cram into a fixed number of parameters, and the rare ones blur. Source of fluency on common topics, and of fabrication on uncommon ones. Counterpart to [contextual knowledge](#contextual-knowledge).
 
-*Usage:*
+_Usage:_
 
 "It writes flawless React but invents methods on our internal SDK."
 
@@ -544,7 +544,7 @@ What the [model](#model) "knows" from [training](#training), stored in its [para
 
 The date past which a [model](#model) has no [parametric knowledge](#parametric-knowledge). Libraries, APIs, and events from after the cutoff are fabrication traps unless their docs are loaded as [contextual knowledge](#contextual-knowledge). Each model release ships with its own cutoff.
 
-*Usage:*
+_Usage:_
 
 "It keeps writing the v3 SDK syntax — we're on v5."
 
@@ -552,13 +552,13 @@ The date past which a [model](#model) has no [parametric knowledge](#parametric-
 
 ### Contextual knowledge
 
-Facts the [agent](#agent) can read directly from the [context](#context) right now — the user's task, files the agent has read in, [tool results](#tool-result), [AGENTS.md](#agentsmd) content loaded at [session](#session) start. Counterpart to [parametric knowledge](#parametric-knowledge): parametric is *recalled* from the parameters; contextual is *read* from the [window](#context-window). [Hallucinations](#hallucination) are much less common when the agent works from contextual knowledge — the answer is right in front of it, not dredged up from a blurred memory.
+Facts the [agent](#agent) can read directly from the [context](#context) right now — the user's task, files the agent has read in, [tool results](#tool-result), [AGENTS.md](#agentsmd) content loaded at [session](#session) start. Counterpart to [parametric knowledge](#parametric-knowledge): parametric is _recalled_ from the parameters; contextual is _read_ from the [window](#context-window). [Hallucinations](#hallucination) are much less common when the agent works from contextual knowledge — the answer is right in front of it, not dredged up from a blurred memory.
 
-*Reach for this term* only when contrasting with parametric knowledge; otherwise just say **context**.
+_Reach for this term_ only when contrasting with parametric knowledge; otherwise just say **context**.
 
-*Avoid:* "working memory" — contextual knowledge is what's in the window *now*; a [memory system](#memory-system) is what gets cross-session content into it. Different scales, don't conflate.
+_Avoid:_ "working memory" — contextual knowledge is what's in the window _now_; a [memory system](#memory-system) is what gets cross-session content into it. Different scales, don't conflate.
 
-*Usage:*
+_Usage:_
 
 "Why does it nail the API when I paste the docs and fabricate it when I don't?"
 
@@ -568,7 +568,7 @@ Facts the [agent](#agent) can read directly from the [context](#context) right n
 
 When predicting each [token](#token), the [model](#model) factors in every other token in the [context](#context) — some heavily, others barely at all. The pairing between two tokens is an **attention relationship**, and meaningful pairs ("her" with "Sarah", or a `getUser()` call with its `function getUser` definition) influence each other more than unrelated ones. A context of N tokens has on the order of N² relationships.
 
-*Usage:*
+_Usage:_
 
 "It keeps confusing the two `user` symbols across the diff — sounds like we're in the [dumb zone](#smart-zone)."
 
@@ -578,7 +578,7 @@ When predicting each [token](#token), the [model](#model) factors in every other
 
 Each [token](#token) has a finite amount of influence to distribute across the rest of the [context](#context). Heavy influence on [one relationship](#attention-relationship) leaves less for others. The budget is per-token and doesn't grow when the context does, which is why long [sessions](#session) dilute.
 
-*Usage:*
+_Usage:_
 
 "Why does it keep ignoring the schema I pasted at the top?"
 
@@ -588,7 +588,7 @@ Each [token](#token) has a finite amount of influence to distribute across the r
 
 As a [session](#session) grows, each [token](#token)'s [attention budget](#attention-budget) is spread across more competitors. The signal on any one [meaningful relationship](#attention-relationship) shrinks; noise from irrelevant [context](#context) crowds in. Same [model](#model), same [parameters](#parameters) — just more mouths to feed from the same plate. Cause of the smart zone / dumb [zone effect](#smart-zone).
 
-*Usage:*
+_Usage:_
 
 "It's deep in the dumb zone — inventing generics that aren't in the type file."
 
@@ -610,7 +610,7 @@ _Usage:_
 
 Ending the current [session](#session) and starting a fresh one. The next message begins with an empty session and an empty [context window](#context-window). Usually user-driven.
 
-*Usage:*
+_Usage:_
 
 "It's stuck looping on the failing test."
 
@@ -620,7 +620,7 @@ Ending the current [session](#session) and starting a fresh one. The next messag
 
 Transferring [agent](#agent) [context](#context) from one [session](#session) to another, with no return path. The carry mechanism varies — a written [handoff artifact](#handoff-artifact), an in-memory summary ([compaction](#compaction)), and others. Distinct from [clearing](#clearing) (no transfer at all). Reasons vary: switching roles (planner → implementer), kicking off an [AFK](#afk) run, fanning out to parallel sessions, or freeing up [context window](#context-window) room.
 
-*Usage:*
+_Usage:_
 
 "Planning session is getting heavy — should I just keep going?"
 
@@ -630,7 +630,7 @@ Transferring [agent](#agent) [context](#context) from one [session](#session) to
 
 A document used as the carry mechanism for a [handoff](#handoff) — written by one [session](#session) to be read by another. One way among several (see also **compaction**, [compaction](#compaction)).
 
-*Usage:*
+_Usage:_
 
 "How do I split this between the planning [agent](#agent) and the implementing one?"
 
@@ -640,7 +640,7 @@ A document used as the carry mechanism for a [handoff](#handoff) — written by 
 
 A [handoff artifact](#handoff-artifact) describing a multi-[session](#session) piece of work — what's being built, not how each session does its share. Mutates as work progresses. Made of [tickets](#ticket).
 
-*Usage:*
+_Usage:_
 
 "Should this all be one session?"
 
@@ -650,7 +650,7 @@ A [handoff artifact](#handoff-artifact) describing a multi-[session](#session) p
 
 A [handoff artifact](#handoff-artifact) scoping one [session](#session) of work. Stands alone, or hangs off a [spec](#spec) as one of its children. Tickets can block or be blocked by sibling tickets, so the order of work falls out of their dependency graph rather than a linear plan.
 
-*Usage:*
+_Usage:_
 
 "Where do I start on the migration spec?"
 
@@ -660,7 +660,7 @@ A [handoff artifact](#handoff-artifact) scoping one [session](#session) of work.
 
 A [handoff](#handoff) done in-memory: the previous [session](#session)'s history is summarised and seeds a fresh session. Lossy — detail traded for headroom. Triggered manually by the user, or [automatically](#autocompact).
 
-*Usage:*
+_Usage:_
 
 "[Context](#context)'s getting heavy and I still have the test pass to do."
 
@@ -670,7 +670,7 @@ A [handoff](#handoff) done in-memory: the previous [session](#session)'s history
 
 [Compaction](#compaction) triggered automatically by the [harness](#harness) when the [context window](#context-window) approaches full.
 
-*Usage:*
+_Usage:_
 
 "It doesn't seem to remember what we decided about the schema earlier."
 
@@ -682,7 +682,7 @@ A [handoff](#handoff) done in-memory: the previous [session](#session)'s history
 
 A system that attempts to make an [agent](#agent) [stateful](#stateful) across [sessions](#session). Persists information into the [environment](#environment) during a session and reloads it into the [context window](#context-window) at the start of future ones, so the agent carries continuity beyond the user [clearing](#clearing) the session.
 
-*Usage:*
+_Usage:_
 
 "I keep having to re-tell it I'm on Postgres, not MySQL."
 
@@ -692,9 +692,9 @@ A system that attempts to make an [agent](#agent) [stateful](#stateful) across [
 
 A file in the [environment](#environment) that the [harness](#harness) loads into the [context window](#context-window) at [session](#session) start — the project's standing brief to the [agent](#agent). Cross-harness convention.
 
-*Avoid:* using AGENTS.md for content that should be [progressively disclosed](#progressive-disclosure) — anything in it pays a [token](#token) cost every [turn](#turn).
+_Avoid:_ using AGENTS.md for content that should be [progressively disclosed](#progressive-disclosure) — anything in it pays a [token](#token) cost every [turn](#turn).
 
-*Usage:*
+_Usage:_
 
 "Why is every session starting with 4k tokens already burned?"
 
@@ -738,7 +738,7 @@ _Usage:_
 
 An [agent](#agent) spawned by another agent via a [tool call](#tool-call). Runs in its own [session](#session) with its own [context window](#context-window), and reports a single [tool result](#tool-result) back. Distinct from a [handoff](#handoff) — the parent specifically expects a return; a handoff has no return path. **Cannot spawn further subagents** — the tree is one level deep. Subagents exist to isolate [context](#context), not to compose hierarchies.
 
-*Usage:*
+_Usage:_
 
 "The grep results are blowing out my context."
 
@@ -750,7 +750,7 @@ An [agent](#agent) spawned by another agent via a [tool call](#tool-call). Runs 
 
 A working pattern where one or more humans pair with the [agent](#agent) during a [session](#session) — reviewing, redirecting, or collaborating in real time. The human is present and engaged, not just gating individual actions.
 
-*Usage:*
+_Usage:_
 
 "Run this [AFK](#afk) overnight?"
 
@@ -772,11 +772,11 @@ _Usage:_
 
 ### Automated check
 
-A deterministic verification that runs in the [environment](#environment) — tests, type checks, lints, build, pre-commit hooks. Pass/fail, no judgement. The signal an [agent](#agent) can self-correct from without involving anyone else. A flaky test is a broken check, not a non-check; automated checks are deterministic *by design*.
+A deterministic verification that runs in the [environment](#environment) — tests, type checks, lints, build, pre-commit hooks. Pass/fail, no judgement. The signal an [agent](#agent) can self-correct from without involving anyone else. A flaky test is a broken check, not a non-check; automated checks are deterministic _by design_.
 
-*Avoid:* "feedback loop" / "backpressure" — both lump checks together with [review](#automated-review). *Avoid:* "test" — tests are automated checks, but not all automated checks are tests.
+_Avoid:_ "feedback loop" / "backpressure" — both lump checks together with [review](#automated-review). _Avoid:_ "test" — tests are automated checks, but not all automated checks are tests.
 
-*Usage:*
+_Usage:_
 
 "The agent keeps shipping broken code in the [AFK](#afk) runs."
 
@@ -788,11 +788,11 @@ A deterministic verification that runs in the [environment](#environment) — te
 
 ### Automated review
 
-An [agent](#agent) reviewing another agent's work, often with a different [model](#model) or [system prompt](#system-prompt). Non-deterministic: it forms a judgement. Runs anywhere — pre-merge on a PR, post-hoc on commit history, mid-session as a [subagent](#subagent). An LLM-as-judge in CI is automated review, not an [automated check](#automated-check); what the assertion *does* decides the category, not where it runs.
+An [agent](#agent) reviewing another agent's work, often with a different [model](#model) or [system prompt](#system-prompt). Non-deterministic: it forms a judgement. Runs anywhere — pre-merge on a PR, post-hoc on commit history, mid-session as a [subagent](#subagent). An LLM-as-judge in CI is automated review, not an [automated check](#automated-check); what the assertion _does_ decides the category, not where it runs.
 
-*Avoid:* "AI review" / "agent review" — too vague to distinguish from the working agent itself.
+_Avoid:_ "AI review" / "agent review" — too vague to distinguish from the working agent itself.
 
-*Usage:*
+_Usage:_
 
 "We're getting too many bad PRs from the [AFK](#afk) runs."
 
@@ -800,11 +800,11 @@ An [agent](#agent) reviewing another agent's work, often with a different [model
 
 ### Human review
 
-The user reading the code the [agent](#agent) produced and forming a judgement on it. Reading the diff or the changed files counts; reading the agent's *description* of what it did does not — narration is not the artifact.
+The user reading the code the [agent](#agent) produced and forming a judgement on it. Reading the diff or the changed files counts; reading the agent's _description_ of what it did does not — narration is not the artifact.
 
-*Avoid:* "code review" alone — ambiguous between human and [automated](#automated-review).
+_Avoid:_ "code review" alone — ambiguous between human and [automated](#automated-review).
 
-*Usage:*
+_Usage:_
 
 "I human-reviewed the [AFK](#afk) output."
 
@@ -816,9 +816,9 @@ The user reading the code the [agent](#agent) produced and forming a judgement o
 
 A working pattern where the user accepts the [agent](#agent)'s code without [human review](#human-review). The diff is treated as opaque — what matters is whether the program behaves, not what's inside. [Automated review](#automated-review) and [automated checks](#automated-check) may still run; vibe coding is silent on both.
 
-*Avoid:* "vibe coding" as a synonym for "low-quality AI coding" — the term names the review stance, not the resulting code.
+_Avoid:_ "vibe coding" as a synonym for "low-quality AI coding" — the term names the review stance, not the resulting code.
 
-*Usage:*
+_Usage:_
 
 "Did you read what it changed in the auth flow?"
 
@@ -828,9 +828,9 @@ A working pattern where the user accepts the [agent](#agent)'s code without [hum
 
 ### Design concept
 
-The shared understanding of what's being built, held in common between user and [agent](#agent) but separate from any asset. Brookes' term (*The Design of Design*): the conversation, [handoff artifacts](#handoff-artifact), and the code are all assets that try to capture or reach the design concept, but none of them *are* it. Quality of the design concept is felt through the quality of the conversation that built it.
+The shared understanding of what's being built, held in common between user and [agent](#agent) but separate from any asset. Brookes' term (_The Design of Design_): the conversation, [handoff artifacts](#handoff-artifact), and the code are all assets that try to capture or reach the design concept, but none of them _are_ it. Quality of the design concept is felt through the quality of the conversation that built it.
 
-*Usage:*
+_Usage:_
 
 "It's writing exactly what I asked for and it's still wrong."
 
@@ -840,7 +840,7 @@ The shared understanding of what's being built, held in common between user and 
 
 A technique for developing a [design concept](#design-concept) with an [agent](#agent): the agent interviews the user Socratically, one decision at a time, proposing a recommended answer for each. Slows the rush to a finished plan — no [handoff artifact](#handoff-artifact) is written until the concept stabilises.
 
-*Usage:*
+_Usage:_
 
 "It went straight to writing the [spec](#spec) and got the cancellation logic wrong."
 

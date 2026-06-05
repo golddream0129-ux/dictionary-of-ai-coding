@@ -4,9 +4,10 @@ aliases:
   - HITL
   - Human-in-the-loop (HITL)
 ---
+
 A working pattern where one or more humans pair with the [agent](./Agent.md) during a [session](./Session.md) — reviewing, redirecting, or collaborating in real time. The human is present and engaged, not just gating individual actions.
 
-*Usage:*
+_Usage:_
 
 "Run this [AFK](./AFK.md) overnight?"
 

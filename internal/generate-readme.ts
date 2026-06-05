@@ -45,7 +45,9 @@ function parseCurriculum(text: string): Section[] {
 
     if (line.startsWith("## ")) {
       if (!SECTION_RE.test(line)) {
-        fail(`Curriculum.md:${lineNo}: section heading must match "## Section N — Title" (em-dash required): ${line}`);
+        fail(
+          `Curriculum.md:${lineNo}: section heading must match "## Section N — Title" (em-dash required): ${line}`
+        );
       }
       current = { heading: line.slice(3), terms: [] };
       sections.push(current);
@@ -53,17 +55,25 @@ function parseCurriculum(text: string): Section[] {
     }
 
     if (line.startsWith("- ")) {
-      if (!current) fail(`Curriculum.md:${lineNo}: bullet before any section heading`);
+      if (!current)
+        fail(`Curriculum.md:${lineNo}: bullet before any section heading`);
       const m = line.match(BULLET_RE);
-      if (!m || !m[1]) fail(`Curriculum.md:${lineNo}: malformed bullet: ${line}`);
+      if (!m || !m[1])
+        fail(`Curriculum.md:${lineNo}: malformed bullet: ${line}`);
       const term = m[1];
-      if (term.trim() !== term) fail(`Curriculum.md:${lineNo}: term has surrounding whitespace`);
-      if (/[*_`\[]/.test(term)) fail(`Curriculum.md:${lineNo}: term must be plain text, no markdown: ${term}`);
+      if (term.trim() !== term)
+        fail(`Curriculum.md:${lineNo}: term has surrounding whitespace`);
+      if (/[*_`\[]/.test(term))
+        fail(
+          `Curriculum.md:${lineNo}: term must be plain text, no markdown: ${term}`
+        );
       current.terms.push(term);
       return;
     }
 
-    fail(`Curriculum.md:${lineNo}: only "## Section N — Title" headings and "- Term" bullets are allowed: ${line}`);
+    fail(
+      `Curriculum.md:${lineNo}: only "## Section N — Title" headings and "- Term" bullets are allowed: ${line}`
+    );
   });
 
   return sections;
@@ -85,7 +95,8 @@ function rewriteLinks(body: string): string {
 function main(): void {
   const template = readFileSync(TEMPLATE, "utf8");
   if (!template.includes(MARKER)) fail(`Template missing ${MARKER} marker`);
-  if (!template.includes(TOC_MARKER)) fail(`Template missing ${TOC_MARKER} marker`);
+  if (!template.includes(TOC_MARKER))
+    fail(`Template missing ${TOC_MARKER} marker`);
 
   const sections = parseCurriculum(readFileSync(CURRICULUM, "utf8"));
 
@@ -101,17 +112,29 @@ function main(): void {
       try {
         body = readFileSync(entryPath, "utf8");
       } catch {
-        fail(`Curriculum.md references "${term}" but ${entryPath} does not exist`);
+        fail(
+          `Curriculum.md references "${term}" but ${entryPath} does not exist`
+        );
       }
-      parts.push(`### ${term}`, "", rewriteLinks(stripFrontmatter(body).trimEnd()), "");
+      parts.push(
+        `### ${term}`,
+        "",
+        rewriteLinks(stripFrontmatter(body).trimEnd()),
+        ""
+      );
     }
   }
 
   const onDisk = new Set(
-    readdirSync(DICT_DIR).filter((n) => n.endsWith(".md")).map((n) => n.slice(0, -3)),
+    readdirSync(DICT_DIR)
+      .filter((n) => n.endsWith(".md"))
+      .map((n) => n.slice(0, -3))
   );
   const orphans = [...onDisk].filter((t) => !seen.has(t)).sort();
-  if (orphans.length) fail(`dictionary/ entries not referenced by Curriculum.md: ${orphans.join(", ")}`);
+  if (orphans.length)
+    fail(
+      `dictionary/ entries not referenced by Curriculum.md: ${orphans.join(", ")}`
+    );
 
   const block = parts.join("\n").trimEnd() + "\n";
   const toc = sections
@@ -137,7 +160,7 @@ function main(): void {
     "-->\n\n";
   writeFileSync(
     OUTPUT,
-    banner + template.replace(TOC_MARKER, toc).replace(MARKER, block),
+    banner + template.replace(TOC_MARKER, toc).replace(MARKER, block)
   );
 }
 

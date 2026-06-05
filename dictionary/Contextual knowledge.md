@@ -1,13 +1,14 @@
 ---
 description: Facts the agent can read directly from the context right now. Counterpart to parametric knowledge.
 ---
-Facts the [agent](./Agent.md) can read directly from the [context](./Context.md) right now — the user's task, files the agent has read in, [tool results](./Tool%20result.md), [AGENTS.md](./AGENTS.md.md) content loaded at [session](./Session.md) start. Counterpart to [parametric knowledge](./Parametric%20knowledge.md): parametric is *recalled* from the parameters; contextual is *read* from the [window](./Context%20window.md). [Hallucinations](./Hallucination.md) are much less common when the agent works from contextual knowledge — the answer is right in front of it, not dredged up from a blurred memory.
 
-*Reach for this term* only when contrasting with parametric knowledge; otherwise just say **context**.
+Facts the [agent](./Agent.md) can read directly from the [context](./Context.md) right now — the user's task, files the agent has read in, [tool results](./Tool%20result.md), [AGENTS.md](./AGENTS.md.md) content loaded at [session](./Session.md) start. Counterpart to [parametric knowledge](./Parametric%20knowledge.md): parametric is _recalled_ from the parameters; contextual is _read_ from the [window](./Context%20window.md). [Hallucinations](./Hallucination.md) are much less common when the agent works from contextual knowledge — the answer is right in front of it, not dredged up from a blurred memory.
 
-*Avoid:* "working memory" — contextual knowledge is what's in the window *now*; a [memory system](./Memory%20system.md) is what gets cross-session content into it. Different scales, don't conflate.
+_Reach for this term_ only when contrasting with parametric knowledge; otherwise just say **context**.
 
-*Usage:*
+_Avoid:_ "working memory" — contextual knowledge is what's in the window _now_; a [memory system](./Memory%20system.md) is what gets cross-session content into it. Different scales, don't conflate.
+
+_Usage:_
 
 "Why does it nail the API when I paste the docs and fabricate it when I don't?"
 
