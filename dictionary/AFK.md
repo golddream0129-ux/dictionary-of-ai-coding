@@ -11,7 +11,7 @@ When you're not there, the agent handles ambiguity differently. While you're wat
 
 Since you can't give input during the run, give it before and after instead. Before: resolve the ambiguity up front — a [grilling](./Grilling.md) session, a written [spec](./Spec.md) — so there are fewer gaps for the agent to fill alone. During: [automated checks](./Automated%20check.md) and [automated review](./Automated%20review.md) stand in for the attention you're not giving, failing fast on what can be caught mechanically. After: the run ends in something reviewable — a PR, not changes already merged. AFK doesn't remove [human review](./Human%20review.md); it defers all of it to the end, which is why what arrives at the end has to be worth reviewing. This is also why [AX](./AX.md) matters most in AFK runs — with no one watching, the environment is the only support the agent gets.
 
-_Avoid:_ "background agent" — centers the machine ("running in the background") rather than the human pattern ("user has walked away"). AFK is the load-bearing fact: the user isn't watching.
+_Avoid:_ "background agent" — centers the machine ("running in the background") rather than the human pattern ("user has walked away"). AFK names the fact that matters: the user isn't watching.
 
 _Usage:_
 

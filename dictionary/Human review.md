@@ -2,7 +2,7 @@
 description: The user reading the code the agent produced and forming a judgement on it. Reading the diff counts; reading the summary doesn't.
 ---
 
-The user reading the code the [agent](./Agent.md) produced and forming a judgement on it. Reading the diff or the changed files counts; reading the agent's _description_ of what it did does not — narration is not the artifact.
+The user reading the code the [agent](./Agent.md) produced and forming a judgement on it. Reading the diff or the changed files counts; reading the agent's _description_ of what it did does not — narration is not the artifact. The description is a [secondary source](./Secondary%20source.md), written by the party being reviewed; the diff is the [primary source](./Primary%20source.md), and review means reading it.
 
 Agents raise the volume of code produced, so review becomes the bottleneck. One useful idea is layering different review strategies. [Automated checks](./Automated%20check.md) catch the mechanical failures, [automated review](./Automated%20review.md) catches the describable ones, and human review is reserved for what only you can judge — whether the change is the right change, whether the approach fits the codebase, whether this should exist at all.
 

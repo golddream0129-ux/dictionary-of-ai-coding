@@ -56,6 +56,8 @@
 
 - Clearing
 - Handoff
+- Primary source
+- Secondary source
 - Handoff artifact
 - Spec
 - Ticket

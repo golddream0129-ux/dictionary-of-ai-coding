@@ -105,6 +105,8 @@ That's what this dictionary is for. **The vocabulary of AI coding, translated in
 
 - [Clearing](#clearing)
 - [Handoff](#handoff)
+- [Primary source](#primary-source)
+- [Secondary source](#secondary-source)
 - [Handoff artifact](#handoff-artifact)
 - [Spec](#spec)
 - [Ticket](#ticket)
@@ -967,11 +969,45 @@ _Usage:_
 
 "Do a handoff. Write the decisions to a doc, clear, start the implementation in a fresh session reading from it."
 
+### Primary source
+
+A source of truth in its original form — the code, the conversation transcript, the raw log, the actual API response. Not an account of the thing; the thing. Counterpart to [secondary source](#secondary-source).
+
+If you want to know what your codebase does, the code is the primary source. The docs, the architecture diagram, and the README are all descriptions of it — accurate when written, on their own schedule ever since. When an [agent](#agent) confidently asserts something wrong about your project, the question to ask is which source it was working from: an agent that read a doc inherits the doc's staleness; an agent that read the code is reading the current truth.
+
+The cost is what keeps primary sources from being the default. Loading one into the [context window](#context-window) is expensive — the full file, the full transcript, every [token](#token) billed as [input](#input-tokens) and competing for [attention budget](#attention-budget). What you get for the cost is completeness: nothing has been pre-filtered by someone else's judgement about what mattered. A summary written last month can't contain the detail that turned out to matter today; the primary source still does.
+
+Reach for the primary source when precision matters — the exact signature, the actual error, the line that throws. Much of managing [context](#context) is deciding when to pay for the primary source and when a secondary source is good enough.
+
+_Usage:_
+
+"The agent says the retry logic backs off exponentially, but I'm watching it hammer the endpoint."
+
+"It read that out of the design doc. Point it at the actual retry module — work from the primary source when the behaviour matters."
+
+### Secondary source
+
+An account of a [primary source](#primary-source), one step removed — documentation describing code, a summary describing a transcript, a report describing search results. Cheaper to load into the [context window](#context-window) than the source it describes, and lossy by construction: whoever wrote it decided what mattered, and whatever they dropped is invisible to a reader who only has the summary.
+
+A lot of [context](#context) engineering is the manufacture of secondary sources. [Compaction](#compaction) turns the [session](#session) history into a summary that seeds the next session. A [subagent](#subagent) burns its own context on a noisy search and returns a short report. A [handoff artifact](#handoff-artifact) condenses a session's decisions into a document the next session reads. [Memory systems](#memory-system) distil what a session learned into notes. Each makes the same trade: fidelity for headroom.
+
+Secondary sources fail in two ways. They're lossy — the compaction summary that lost the schema decision, the report that didn't mention the edge case. And they drift — the primary source changes and the account doesn't follow, so docs describe last quarter's architecture with this quarter's confidence. When an [agent](#agent) acts on a secondary source that has failed either way, it works confidently from wrong information; the fix is sending it back to the primary source.
+
+Neither failure makes secondary sources a mistake. The context window is finite, and primary sources are expensive; without summaries, reports, and handoff documents, nothing large fits. The skill is knowing which details can survive the loss — and verifying against the primary source when one can't. A well-made secondary source carries a [context pointer](#context-pointer) back to its original — the summary that names the transcript it came from, the doc that names the file it describes — so when the account isn't enough, the reader can follow the pointer rather than work from the loss.
+
+_Usage:_
+
+"The handoff doc says auth is done, but the new session keeps finding broken token refresh."
+
+"The doc's a secondary source — the last session wrote down what it believed, not what's true. Have the new session run the auth tests and trust the primary source."
+
 ### Handoff artifact
 
 A document used as the carry mechanism for a [handoff](#handoff) — written to the [environment](#environment) by one [session](#session) to be read by another. [Specs](#spec), [tickets](#ticket), and plan docs are all handoff artifacts.
 
 The reason to write one: the [model](#model) is [stateless](#stateless), so nothing in a session survives [clearing](#clearing) it. Decisions, constraints, half-finished plans — all gone with the [context](#context) that held them. The environment persists. Writing the important state into a file moves it somewhere the next session can read it back from.
+
+The artifact is a [secondary source](#secondary-source) — an account of the session's work, not the work itself. That's what makes it small enough to brief a fresh session, and also why it can mislead one: it records what the writing session believed, and anything it left out or got wrong is invisible to the reader. Where a claim matters, the next session should verify it against the [primary source](#primary-source) — the code, the tests — rather than inherit it.
 
 A good artifact is written to be read into a session that has zero context. Concrete file paths rather than "the file we discussed". What was decided and why, so the next session doesn't relitigate it. What's done and what's left. It helps to tell the writing session where the artifact is headed: "write a handoff doc for a fresh session that knows nothing about this work".
 
@@ -1015,9 +1051,9 @@ _Usage:_
 
 ### Compaction
 
-A [handoff](#handoff) done in-memory: the previous [session](#session)'s history is summarised, and the summary seeds a fresh session. Lossy by design: detail traded for headroom. Triggered manually by the user, or automatically via [autocompact](#autocompact).
+A [handoff](#handoff) done in-memory: the previous [session](#session)'s history is summarised, and the summary seeds a fresh session. Lossy by design: the transcript is a [primary source](#primary-source), the summary a [secondary source](#secondary-source) — detail traded for headroom. Triggered manually by the user, or automatically via [autocompact](#autocompact).
 
-The mechanism: the [context window](#context-window) is finite, and a long session fills it — every [tool result](#tool-result), every file read, every wrong turn stays in history. When it gets heavy, the [harness](#harness) asks the [model](#model) to summarise the session, throws the original history away, and seeds a fresh session with the summary. Whatever didn't make it in is gone — not archived, gone.
+The mechanism: the [context window](#context-window) is finite, and a long session fills it — every [tool result](#tool-result), every file read, every wrong turn stays in history. When it gets heavy, the [harness](#harness) asks the [model](#model) to summarise the session, throws the original history away, and seeds a fresh session with the summary. Whatever didn't make it into the summary is gone from the context. Some harnesses soften this by keeping the old transcript on disk and leaving a [context pointer](#context-pointer) to it in the summary — the secondary source links back to its primary source, so a detail the summary lost can be recovered by re-reading the original.
 
 The summary is written by the model, so it can be prompted. "Preserve the schema decisions" makes the generated artifact more deliberate. Timing matters too — compact at a phase boundary, after the plan is settled, not mid-task.
 
@@ -1027,7 +1063,7 @@ _Usage:_
 
 "[Context](#context)'s getting heavy and I still have the test pass to do."
 
-"Compact before you start — write what's load-bearing into the summary prompt so the new session keeps the schema decisions and drops the exploration."
+"Compact before you start — write what must survive into the summary prompt so the new session keeps the schema decisions and drops the exploration."
 
 ### Autocompact
 
@@ -1053,7 +1089,7 @@ A system that attempts to make an [agent](#agent) [stateful](#stateful) across [
 
 A memory system has two halves. The write path: during a session, the agent records what it learned — a preference you stated, a fact about the project — as files in the environment. The read path: at session start, the [harness](#harness) loads those files, or an index of them, back into the context window. Many harnesses ship their own memory system — Claude Code's `/memory` is one — but you can also build one yourself: a directory of notes plus an instruction in [AGENTS.md](#agentsmd) to consult it.
 
-The same trade-offs as any always-loaded content apply. Memories accumulate, so most systems load a one-line index and leave the bodies behind [context pointers](#context-pointer) rather than inlining everything. And memories go stale: a fact recorded in March is loaded with equal confidence in June, after the project has moved on. A memory system needs pruning, the same way AGENTS.md does.
+The same trade-offs as any always-loaded content apply. Memories accumulate, so most systems load a one-line index and leave the bodies behind [context pointers](#context-pointer) rather than inlining everything. And memories are [secondary sources](#secondary-source), so they drift: a fact recorded in March is loaded with equal confidence in June, after the project has moved on. A memory system needs pruning, the same way AGENTS.md does.
 
 _Usage:_
 
@@ -1103,6 +1139,8 @@ A pointer needs two parts to work: a stable path, and enough description for the
 
 Pointers are everywhere once you look: lines in AGENTS.md, [skill](#skill) descriptions (the harness loads the description; the skill body waits behind it), filenames in a directory listing, links between docs.
 
+A pointer can also tie a [secondary source](#secondary-source) back to the [primary source](#primary-source) it was derived from — the compaction summary that names the original transcript, the doc that names the source file it describes. This makes the secondary source's lossiness recoverable: when the summary turns out not to be enough, the agent follows the pointer and reads the original, instead of working from whatever the summary kept.
+
 _Avoid:_ "reference" — too dry; doesn't convey that following it pulls more context in. "Portal" — too florid.
 
 _Usage:_
@@ -1137,7 +1175,7 @@ _Usage:_
 
 An [agent](#agent) spawned by another agent via a [tool call](#tool-call). Runs in its own [session](#session) with its own [context window](#context-window), and reports a single [tool result](#tool-result) back. Distinct from a [handoff](#handoff) — the parent specifically expects a return; a handoff has no return path. **Cannot spawn further subagents** — the tree is one level deep. Subagents exist to isolate [context](#context), not to compose hierarchies.
 
-The point is to keep noisy work out of the parent's context. A broad search or a long file-reading expedition produces pages of tool results, most of which matter only long enough to find the answer. Run inside the parent and all of it stays in the parent's context for the rest of the session. Run inside a subagent and the noise fills a disposable window instead — only the final report lands in the parent's context.
+The point is to keep noisy work out of the parent's context. A broad search or a long file-reading expedition produces pages of tool results, most of which matter only long enough to find the answer. Run inside the parent and all of it stays in the parent's context for the rest of the session. Run inside a subagent and the noise fills a disposable window instead — only the final report lands in the parent's context. The report is a [secondary source](#secondary-source): the parent gets the subagent's account of what it found, not the raw results, so anything the report leaves out is invisible to the parent.
 
 Subagents also run concurrently — a parent can fan several out at once over independent pieces of work.
 
@@ -1175,7 +1213,7 @@ When you're not there, the agent handles ambiguity differently. While you're wat
 
 Since you can't give input during the run, give it before and after instead. Before: resolve the ambiguity up front — a [grilling](#grilling) session, a written [spec](#spec) — so there are fewer gaps for the agent to fill alone. During: [automated checks](#automated-check) and [automated review](#automated-review) stand in for the attention you're not giving, failing fast on what can be caught mechanically. After: the run ends in something reviewable — a PR, not changes already merged. AFK doesn't remove [human review](#human-review); it defers all of it to the end, which is why what arrives at the end has to be worth reviewing. This is also why [AX](#ax) matters most in AFK runs — with no one watching, the environment is the only support the agent gets.
 
-_Avoid:_ "background agent" — centers the machine ("running in the background") rather than the human pattern ("user has walked away"). AFK is the load-bearing fact: the user isn't watching.
+_Avoid:_ "background agent" — centers the machine ("running in the background") rather than the human pattern ("user has walked away"). AFK names the fact that matters: the user isn't watching.
 
 _Usage:_
 
@@ -1223,7 +1261,7 @@ _Usage:_
 
 ### Human review
 
-The user reading the code the [agent](#agent) produced and forming a judgement on it. Reading the diff or the changed files counts; reading the agent's _description_ of what it did does not — narration is not the artifact.
+The user reading the code the [agent](#agent) produced and forming a judgement on it. Reading the diff or the changed files counts; reading the agent's _description_ of what it did does not — narration is not the artifact. The description is a [secondary source](#secondary-source), written by the party being reviewed; the diff is the [primary source](#primary-source), and review means reading it.
 
 Agents raise the volume of code produced, so review becomes the bottleneck. One useful idea is layering different review strategies. [Automated checks](#automated-check) catch the mechanical failures, [automated review](#automated-review) catches the describable ones, and human review is reserved for what only you can judge — whether the change is the right change, whether the approach fits the codebase, whether this should exist at all.
 
