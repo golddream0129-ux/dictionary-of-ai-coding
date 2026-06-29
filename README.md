@@ -42,6 +42,7 @@ That's what this dictionary is for. **The vocabulary of AI coding, translated in
 - [Parameters](#parameters)
 - [Training](#training)
 - [Inference](#inference)
+- [Effort](#effort)
 - [Token](#token)
 - [Next-token prediction](#next-token-prediction)
 - [Non-determinism](#non-determinism)
@@ -237,6 +238,31 @@ _Usage:_
 
 "You're paying for inference — every model provider request runs the model on the provider's hardware. Training already happened, but inference costs accrue per request, and a single [turn](#turn) can expand into many requests when tools are called."
 
+### Effort
+
+Effort is a dial for how much reasoning a [model](#model) does before it answers. Set per [model provider request](#model-provider-request), it controls the length of the thinking the model works through before it starts writing the response you see. That thinking is generated at [inference](#inference) time like everything else; the [harness](#harness) often hides it, but it's real work the model is doing.
+
+Higher effort costs more and runs slower. The reasoning is emitted as [tokens](#token), billed as [output tokens](#output-tokens) even when you never see them, and produced one token at a time — so turning effort up lengthens the wait before the answer arrives and adds to the bill. The trade is more deliberation against speed and cost.
+
+Most harnesses expose effort as a small ladder:
+
+| Level  | What it's for                                                          |
+| ------ | ---------------------------------------------------------------------- |
+| Low    | Mechanical edits, lookups, well-specified changes with one clear path. |
+| Medium | Everyday coding — the usual default.                                   |
+| High   | Tricky bugs, design decisions, multi-step plans.                       |
+| Max    | The hardest problems, where a wrong answer is expensive to unwind.     |
+
+The symptom of getting it wrong cuts both ways. Set effort too low on a hard problem and you get a confident, shallow answer that skipped the reasoning the problem needed — it reads fine and is wrong in a way that costs you later. Set it to max for a one-line rename and you sit through a long think that produces nothing the lowest setting wouldn't have.
+
+Match effort to the task, not the [session](#session). Turn it up for the part that's genuinely hard to reason about, and back down for the rote work around it.
+
+_Usage:_
+
+"It keeps botching this concurrency fix — I've re-explained it three times."
+
+"Bump the effort up. That's a reasoning-heavy bug, and on the default setting it's not thinking long enough before it commits to an approach."
+
 ### Token
 
 The atomic unit a [model](#model) reads and writes. Roughly word-sized but not exactly — common words are one token, rare or long ones split into several. [Context window](#context-window) size, cost, and latency are all counted in tokens.
@@ -362,7 +388,7 @@ _Usage:_
 
 [Tokens](#token) the [model](#model) generates back. Billed at a higher rate than [input tokens](#input-tokens) — commonly around five times the rate — since they cost more compute to produce.
 
-Everything the model writes counts: the prose you read, the code it emits, [tool calls](#tool-call), and any extended thinking the model does before answering. That last one surprises people — reasoning tokens are billed as output even when the [harness](#harness) often doesn't show them to you.
+Everything the model writes counts: the prose you read, the code it emits, [tool calls](#tool-call), and any extended thinking the model does before answering. That last one surprises people — reasoning tokens are billed as output even when the [harness](#harness) often doesn't show them to you, and turning up [effort](#effort) spends more of them.
 
 Output tokens also set the pace of a [session](#session). The model reads input quickly but generates output one token at a time, so when a [turn](#turn) feels slow, it's almost always the output being written, not the input being read. A long wait usually means a long answer is coming.
 

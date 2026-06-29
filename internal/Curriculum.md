@@ -5,6 +5,7 @@
 - Parameters
 - Training
 - Inference
+- Effort
 - Token
 - Next-token prediction
 - Non-determinism
